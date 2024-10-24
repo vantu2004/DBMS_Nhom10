@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Nhom11.form_Admin">
+    <Position X="2" Y="1" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAQCACQAAAQAAACFAAICkAgAAEAAAAACAAAADAA=</HashCode>
+      <FileName>Form\Form_Chinh\FormAdmin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nhom11.form_DangNhap">
+    <Position X="5.25" Y="1" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAASAIABAIAACAgAACgAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Form\Form_Chinh\FormDangNhap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nhom11.form_KhachTraGop">
+    <Position X="8" Y="1" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAACAIAACAAABACAACAAAACAAAAAAAAAAgAAAAABAA=</HashCode>
+      <FileName>Form\Form_Phu\FormKhachTraGop.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nhom11.UC_SanPham">
+    <Position X="2.25" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAiAACAAAAACAACAIAAiAAAEAgAEAAAAAABAAAA=</HashCode>
+      <FileName>UC_Controls\UC_SanPham.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nhom11.form_TaoDongMay">
+    <Position X="6" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAADAAABACAACAAAAiAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Form\Form_Phu\FormTaoDongMay.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nhom11.UC_NhanVien">
+    <Position X="6.25" Y="5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>EGAAUAAAACAAABACAACEoAACAAAEAiAEEABACAAAAAA=</HashCode>
+      <FileName>UC_Controls\UC_NhanVien.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
