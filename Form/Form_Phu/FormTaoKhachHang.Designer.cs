@@ -108,6 +108,7 @@
             this.tbx_SoDienThoai.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.tbx_SoDienThoai.Location = new System.Drawing.Point(411, 61);
             this.tbx_SoDienThoai.Name = "tbx_SoDienThoai";
+            this.tbx_SoDienThoai.ReadOnly = true;
             this.tbx_SoDienThoai.Size = new System.Drawing.Size(340, 32);
             this.tbx_SoDienThoai.TabIndex = 20;
             // 

@@ -61,6 +61,7 @@
             this.btn_HoanThanh.TabIndex = 23;
             this.btn_HoanThanh.Text = "Hoàn thành";
             this.btn_HoanThanh.UseVisualStyleBackColor = false;
+            this.btn_HoanThanh.Click += new System.EventHandler(this.btn_HoanThanh_Click);
             // 
             // lbl_TongHoaDon
             // 
@@ -204,6 +205,7 @@
             this.Name = "form_KhachTraGop";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Khách trả góp";
+            this.Load += new System.EventHandler(this.form_KhachTraGop_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

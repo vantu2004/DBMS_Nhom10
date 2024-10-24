@@ -157,6 +157,7 @@
             this.Name = "form_QuanLy";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý";
+            this.Load += new System.EventHandler(this.form_QuanLy_Load);
             this.pnl_Button.ResumeLayout(false);
             this.ResumeLayout(false);
 

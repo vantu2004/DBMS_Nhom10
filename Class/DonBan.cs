@@ -8,28 +8,28 @@ namespace Nhom11.Class
 {
     public class DonBan
     {
+        private string trangThai;
         private string maDonBan;
         private string ngayTaoDon;
-        private string gioTaoDon;
-        private decimal triGia;
-        private int soLuongDT;
-        private decimal soTienTra;
-        private string trangThai;
-        private string maKhachHang;
-        private string maNhanVien;
-        private string maKhuyenMai;
+        private string soTienTra;
+        private string soLuongDT;
+        private string triGia;
 
-        public DonBan() { }
+        public DonBan(string trangThai, string maDonBan, string ngayTaoDon, string soTienTra, string soLuongDT, string triGia)
+        {
+            this.trangThai = trangThai;
+            this.maDonBan = maDonBan;
+            this.ngayTaoDon = ngayTaoDon;
+            this.soTienTra = soTienTra;
+            this.soLuongDT = soLuongDT;
+            this.triGia = triGia;
+        }
 
+        public string TrangThai { get => trangThai; set => trangThai = value; }
         public string MaDonBan { get => maDonBan; set => maDonBan = value; }
         public string NgayTaoDon { get => ngayTaoDon; set => ngayTaoDon = value; }
-        public string GioTaoDon { get => gioTaoDon; set => gioTaoDon = value; }
-        public decimal TriGia { get => triGia; set => triGia = value; }
-        public int SoLuongDT { get => soLuongDT; set => soLuongDT = value; }
-        public decimal SoTienTra { get => soTienTra; set => soTienTra = value; }
-        public string TrangThai { get => trangThai; set => trangThai = value; }
-        public string MaKhachHang { get => maKhachHang; set => maKhachHang = value; }
-        public string MaNhanVien { get => maNhanVien; set => maNhanVien = value; }
-        public string MaKhuyenMai { get => maKhuyenMai; set => maKhuyenMai = value; }
+        public string SoTienTra { get => soTienTra; set => soTienTra = value; }
+        public string SoLuongDT { get => soLuongDT; set => soLuongDT = value; }
+        public string TriGia { get => triGia; set => triGia = value; }
     }
 }

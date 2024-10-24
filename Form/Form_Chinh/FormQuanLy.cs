@@ -106,5 +106,10 @@ namespace Nhom11
             pnl_ThongTin.Controls.Add(uc_DonHang);
 
         }
+
+        private void form_QuanLy_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btn_TìmKhachHang = new System.Windows.Forms.Button();
+            this.btn_TimKhachHang = new System.Windows.Forms.Button();
             this.tbx_TimKhachHang = new System.Windows.Forms.TextBox();
             this.dgv_DanhSachKhachHang = new System.Windows.Forms.DataGridView();
-            this.btn_XoaKhachHang = new System.Windows.Forms.Button();
             this.btn_SuaKhachHang = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,22 +40,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ChiTietThanhToan)).BeginInit();
             this.SuspendLayout();
             // 
-            // btn_TìmKhachHang
+            // btn_TimKhachHang
             // 
-            this.btn_TìmKhachHang.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btn_TìmKhachHang.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btn_TìmKhachHang.Location = new System.Drawing.Point(607, 20);
-            this.btn_TìmKhachHang.Name = "btn_TìmKhachHang";
-            this.btn_TìmKhachHang.Size = new System.Drawing.Size(110, 33);
-            this.btn_TìmKhachHang.TabIndex = 7;
-            this.btn_TìmKhachHang.Text = "Tìm kiếm";
-            this.btn_TìmKhachHang.UseVisualStyleBackColor = false;
+            this.btn_TimKhachHang.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btn_TimKhachHang.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btn_TimKhachHang.Location = new System.Drawing.Point(675, 21);
+            this.btn_TimKhachHang.Name = "btn_TimKhachHang";
+            this.btn_TimKhachHang.Size = new System.Drawing.Size(110, 33);
+            this.btn_TimKhachHang.TabIndex = 7;
+            this.btn_TimKhachHang.Text = "Tìm kiếm";
+            this.btn_TimKhachHang.UseVisualStyleBackColor = false;
+            this.btn_TimKhachHang.Click += new System.EventHandler(this.btn_TimKhachHang_Click_1);
             // 
             // tbx_TimKhachHang
             // 
             this.tbx_TimKhachHang.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.tbx_TimKhachHang.ForeColor = System.Drawing.Color.DarkGray;
-            this.tbx_TimKhachHang.Location = new System.Drawing.Point(329, 21);
+            this.tbx_TimKhachHang.Location = new System.Drawing.Point(384, 22);
             this.tbx_TimKhachHang.Name = "tbx_TimKhachHang";
             this.tbx_TimKhachHang.Size = new System.Drawing.Size(272, 32);
             this.tbx_TimKhachHang.TabIndex = 6;
@@ -74,24 +74,13 @@
             this.dgv_DanhSachKhachHang.TabIndex = 5;
             this.dgv_DanhSachKhachHang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DanhSachKhachHang_CellClick);
             // 
-            // btn_XoaKhachHang
-            // 
-            this.btn_XoaKhachHang.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btn_XoaKhachHang.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btn_XoaKhachHang.Location = new System.Drawing.Point(977, 21);
-            this.btn_XoaKhachHang.Name = "btn_XoaKhachHang";
-            this.btn_XoaKhachHang.Size = new System.Drawing.Size(110, 33);
-            this.btn_XoaKhachHang.TabIndex = 8;
-            this.btn_XoaKhachHang.Text = "Xóa";
-            this.btn_XoaKhachHang.UseVisualStyleBackColor = false;
-            // 
             // btn_SuaKhachHang
             // 
             this.btn_SuaKhachHang.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btn_SuaKhachHang.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btn_SuaKhachHang.Location = new System.Drawing.Point(861, 21);
+            this.btn_SuaKhachHang.Location = new System.Drawing.Point(954, 21);
             this.btn_SuaKhachHang.Name = "btn_SuaKhachHang";
-            this.btn_SuaKhachHang.Size = new System.Drawing.Size(110, 33);
+            this.btn_SuaKhachHang.Size = new System.Drawing.Size(118, 33);
             this.btn_SuaKhachHang.TabIndex = 9;
             this.btn_SuaKhachHang.Text = "Sửa";
             this.btn_SuaKhachHang.UseVisualStyleBackColor = false;
@@ -130,13 +119,13 @@
             this.dgv_ChiTietThanhToan.RowTemplate.Height = 24;
             this.dgv_ChiTietThanhToan.Size = new System.Drawing.Size(1098, 260);
             this.dgv_ChiTietThanhToan.TabIndex = 47;
-            this.dgv_ChiTietThanhToan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DanhSachKhachHang_CellClick);
+            this.dgv_ChiTietThanhToan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_ChiTietThanhToan_CellClick);
             // 
             // btn_ThanhToan
             // 
             this.btn_ThanhToan.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btn_ThanhToan.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btn_ThanhToan.Location = new System.Drawing.Point(723, 20);
+            this.btn_ThanhToan.Location = new System.Drawing.Point(804, 21);
             this.btn_ThanhToan.Name = "btn_ThanhToan";
             this.btn_ThanhToan.Size = new System.Drawing.Size(132, 33);
             this.btn_ThanhToan.TabIndex = 49;
@@ -153,12 +142,12 @@
             this.Controls.Add(this.dgv_ChiTietThanhToan);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.btn_SuaKhachHang);
-            this.Controls.Add(this.btn_XoaKhachHang);
-            this.Controls.Add(this.btn_TìmKhachHang);
+            this.Controls.Add(this.btn_TimKhachHang);
             this.Controls.Add(this.tbx_TimKhachHang);
             this.Controls.Add(this.dgv_DanhSachKhachHang);
             this.Name = "UC_KhachHang";
             this.Size = new System.Drawing.Size(1104, 726);
+            this.Load += new System.EventHandler(this.UC_KhachHang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSachKhachHang)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ChiTietThanhToan)).EndInit();
             this.ResumeLayout(false);
@@ -168,10 +157,9 @@
 
         #endregion
 
-        public System.Windows.Forms.Button btn_TìmKhachHang;
+        public System.Windows.Forms.Button btn_TimKhachHang;
         public System.Windows.Forms.TextBox tbx_TimKhachHang;
         public System.Windows.Forms.DataGridView dgv_DanhSachKhachHang;
-        public System.Windows.Forms.Button btn_XoaKhachHang;
         public System.Windows.Forms.Button btn_SuaKhachHang;
         public System.Windows.Forms.Label label9;
         public System.Windows.Forms.Label label1;
