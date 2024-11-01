@@ -15,6 +15,8 @@ namespace Nhom11.DB
 
         private SqlConnection conn;
         private string connString;
+        private string Stringtu;
+        
 
         public static SqlConnection GetSqlConnection()
         {
