@@ -14,14 +14,12 @@ namespace Nhom11.DB
         private static string strConnection = @"Data Source=DESKTOP-O9AVOH5\SQLEXPRESS;Initial Catalog=ImeiShop;Integrated Security=True";
 
         private SqlConnection conn;
-        private string connString;
-        private string Stringtu;
-        
+        private string connString;        
 
-        public static SqlConnection GetSqlConnection()
-        {
-            return new SqlConnection(strConnection);
-        }
+        //public static SqlConnection GetSqlConnection()
+        //{
+        //    return new SqlConnection(strConnection);
+        //}
 
         public DBConnection()
         {
