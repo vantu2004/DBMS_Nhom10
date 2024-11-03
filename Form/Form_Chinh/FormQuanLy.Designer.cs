@@ -50,9 +50,10 @@
             this.pnl_Button.Controls.Add(this.btn_SanPham);
             this.pnl_Button.Controls.Add(this.btn_KhachHang);
             this.pnl_Button.Controls.Add(this.btn_DonHang);
-            this.pnl_Button.Location = new System.Drawing.Point(12, 12);
+            this.pnl_Button.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnl_Button.Location = new System.Drawing.Point(0, 0);
             this.pnl_Button.Name = "pnl_Button";
-            this.pnl_Button.Size = new System.Drawing.Size(250, 729);
+            this.pnl_Button.Size = new System.Drawing.Size(250, 1055);
             this.pnl_Button.TabIndex = 0;
             // 
             // btn_KhuyenMai
@@ -101,7 +102,6 @@
             this.btn_ThongKe.TabIndex = 3;
             this.btn_ThongKe.Text = "Thống kê";
             this.btn_ThongKe.UseVisualStyleBackColor = false;
-            this.btn_ThongKe.Visible = false;
             this.btn_ThongKe.Click += new System.EventHandler(this.btn_ThongKe_Click);
             // 
             // btn_SanPham
@@ -143,21 +143,23 @@
             // pnl_ThongTin
             // 
             this.pnl_ThongTin.BackColor = System.Drawing.SystemColors.Control;
-            this.pnl_ThongTin.Location = new System.Drawing.Point(263, 12);
+            this.pnl_ThongTin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_ThongTin.Location = new System.Drawing.Point(250, 0);
             this.pnl_ThongTin.Name = "pnl_ThongTin";
-            this.pnl_ThongTin.Size = new System.Drawing.Size(1107, 729);
+            this.pnl_ThongTin.Size = new System.Drawing.Size(1674, 1055);
             this.pnl_ThongTin.TabIndex = 1;
             // 
             // form_QuanLy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1382, 753);
+            this.ClientSize = new System.Drawing.Size(1924, 1055);
             this.Controls.Add(this.pnl_ThongTin);
             this.Controls.Add(this.pnl_Button);
             this.Name = "form_QuanLy";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.pnl_Button.ResumeLayout(false);
             this.ResumeLayout(false);
 

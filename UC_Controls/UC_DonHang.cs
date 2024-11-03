@@ -21,7 +21,6 @@ namespace Nhom11
             InitializeComponent();
             LoadDanhSachDonHang();
             LoadDanhSachDienThoaiCoSan();
-            //LoadSDTNhanVien_vao_cbx();
             LoadSDTKhachHang_vao_cbx();
             LoadMaKhuyenMai_vao_cbx();
             LoadFilter_vao_4_cbx();
@@ -282,21 +281,6 @@ namespace Nhom11
             }
         }
 
-        //private void LoadSDTNhanVien_vao_cbx()
-        //{
-        //    // Xóa các mục cũ nếu có
-        //    cbx_ChonNhanVien.Items.Clear();
-
-        //    // Lấy danh sách số điện thoại
-        //    List<string> phoneNumbers = donHangDAO.GetDanhSachDienThoaiNhanVien();
-
-        //    // Thêm số điện thoại vào ComboBox
-        //    foreach (string phoneNumber in phoneNumbers)
-        //    {
-        //        cbx_ChonNhanVien.Items.Add(phoneNumber);
-        //    }
-        //}
-
         private void LoadSDTKhachHang_vao_cbx()
         {
             // Xóa các mục cũ nếu có
@@ -508,6 +492,16 @@ namespace Nhom11
             }
 
             return imeiList;
+        }
+
+        private void tbx_TimDonHang_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbx_MaDonHang_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

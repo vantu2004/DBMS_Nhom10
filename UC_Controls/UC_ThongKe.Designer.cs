@@ -39,16 +39,17 @@
             // 
             chartArea1.Name = "ChartArea1";
             this.chart_ThongKe.ChartAreas.Add(chartArea1);
+            this.chart_ThongKe.Dock = System.Windows.Forms.DockStyle.Fill;
             legend1.Name = "Legend1";
             this.chart_ThongKe.Legends.Add(legend1);
-            this.chart_ThongKe.Location = new System.Drawing.Point(3, 3);
+            this.chart_ThongKe.Location = new System.Drawing.Point(0, 0);
             this.chart_ThongKe.Name = "chart_ThongKe";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart_ThongKe.Series.Add(series1);
-            this.chart_ThongKe.Size = new System.Drawing.Size(1098, 720);
+            this.chart_ThongKe.Size = new System.Drawing.Size(1674, 1055);
             this.chart_ThongKe.TabIndex = 1;
             this.chart_ThongKe.Text = "chart1";
             // 
@@ -58,7 +59,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.chart_ThongKe);
             this.Name = "UC_ThongKe";
-            this.Size = new System.Drawing.Size(1104, 726);
+            this.Size = new System.Drawing.Size(1674, 1055);
             ((System.ComponentModel.ISupportInitialize)(this.chart_ThongKe)).EndInit();
             this.ResumeLayout(false);
 
