@@ -68,6 +68,7 @@
     <Compile Include="Class\NhaCungCap.cs" />
     <Compile Include="Class\NhanVien.cs" />
     <Compile Include="Class\ThongKe.cs" />
+    <Compile Include="DB\DangNhapDAO.cs" />
     <Compile Include="DB\DBConnection.cs" />
     <Compile Include="DB\DonHangDAO.cs" />
     <Compile Include="DB\NhanVienDAO.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="DB\KhachHangDAO.cs" />
     <Compile Include="DB\KhuyenMaiDAO.cs" />
     <Compile Include="Class\LoadFilterDienThoaiCoSan.cs" />
+    <Compile Include="Class\BienToanCuc\BienToanCuc.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Form\Form_Phu\FormTaoNhaCungCap.cs">

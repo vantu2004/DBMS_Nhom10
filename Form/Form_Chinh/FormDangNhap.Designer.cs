@@ -46,7 +46,7 @@
             this.panelControl1.Controls.Add(this.rbn_NhanVien);
             this.panelControl1.Controls.Add(this.rbn_Admin);
             this.panelControl1.Location = new System.Drawing.Point(42, 234);
-            this.panelControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelControl1.Margin = new System.Windows.Forms.Padding(4);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(400, 80);
             this.panelControl1.TabIndex = 0;
@@ -57,7 +57,7 @@
             this.rbn_NhanVien.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.rbn_NhanVien.ForeColor = System.Drawing.Color.DarkGray;
             this.rbn_NhanVien.Location = new System.Drawing.Point(209, 22);
-            this.rbn_NhanVien.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbn_NhanVien.Margin = new System.Windows.Forms.Padding(4);
             this.rbn_NhanVien.Name = "rbn_NhanVien";
             this.rbn_NhanVien.Size = new System.Drawing.Size(120, 28);
             this.rbn_NhanVien.TabIndex = 1;
@@ -71,7 +71,7 @@
             this.rbn_Admin.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.rbn_Admin.ForeColor = System.Drawing.Color.DarkGray;
             this.rbn_Admin.Location = new System.Drawing.Point(49, 22);
-            this.rbn_Admin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbn_Admin.Margin = new System.Windows.Forms.Padding(4);
             this.rbn_Admin.Name = "rbn_Admin";
             this.rbn_Admin.Size = new System.Drawing.Size(87, 28);
             this.rbn_Admin.TabIndex = 0;
@@ -129,6 +129,7 @@
             this.btn_DangNhap.TabIndex = 5;
             this.btn_DangNhap.Text = "Đăng nhập";
             this.btn_DangNhap.UseVisualStyleBackColor = false;
+            this.btn_DangNhap.Click += new System.EventHandler(this.btn_DangNhap_Click);
             // 
             // form_DangNhap
             // 
@@ -154,14 +155,14 @@
 
         #endregion
 
-        private DevExpress.XtraEditors.PanelControl panelControl1;
-        private System.Windows.Forms.RadioButton rbn_NhanVien;
-        private System.Windows.Forms.RadioButton rbn_Admin;
-        private System.Windows.Forms.TextBox tbx_TenDangNhap;
-        private System.Windows.Forms.TextBox tbx_MatKhau;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btn_DangNhap;
+        public DevExpress.XtraEditors.PanelControl panelControl1;
+        public System.Windows.Forms.RadioButton rbn_NhanVien;
+        public System.Windows.Forms.RadioButton rbn_Admin;
+        public System.Windows.Forms.TextBox tbx_TenDangNhap;
+        public System.Windows.Forms.TextBox tbx_MatKhau;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Button btn_DangNhap;
     }
 }
 

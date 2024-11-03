@@ -30,11 +30,13 @@
         {
             this.tcl_SanPham = new System.Windows.Forms.TabControl();
             this.tab_DanhSachNhanVien = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dgv_DanhSachNhanVien = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tbx_TimSoDienThoai = new System.Windows.Forms.TextBox();
+            this.btn_TìmSoDienThoai = new System.Windows.Forms.Button();
             this.btn_SuaNhanVien = new System.Windows.Forms.Button();
             this.btn_XoaNhanVien = new System.Windows.Forms.Button();
-            this.btn_TìmSoDienThoai = new System.Windows.Forms.Button();
-            this.tbx_TimSoDienThoai = new System.Windows.Forms.TextBox();
-            this.dgv_DanhSachNhanVien = new System.Windows.Forms.DataGridView();
             this.tab_TaoNhanVien = new System.Windows.Forms.TabPage();
             this.cbx_ChucVu = new System.Windows.Forms.ComboBox();
             this.btn_HoanThanh = new System.Windows.Forms.Button();
@@ -49,7 +51,9 @@
             this.tbx_SoDienThoai = new System.Windows.Forms.TextBox();
             this.tcl_SanPham.SuspendLayout();
             this.tab_DanhSachNhanVien.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSachNhanVien)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.tab_TaoNhanVien.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,30 +66,91 @@
             this.tcl_SanPham.Location = new System.Drawing.Point(0, 0);
             this.tcl_SanPham.Name = "tcl_SanPham";
             this.tcl_SanPham.SelectedIndex = 0;
-            this.tcl_SanPham.Size = new System.Drawing.Size(1104, 726);
+            this.tcl_SanPham.Size = new System.Drawing.Size(1674, 1055);
             this.tcl_SanPham.TabIndex = 4;
             // 
             // tab_DanhSachNhanVien
             // 
-            this.tab_DanhSachNhanVien.Controls.Add(this.btn_SuaNhanVien);
-            this.tab_DanhSachNhanVien.Controls.Add(this.btn_XoaNhanVien);
-            this.tab_DanhSachNhanVien.Controls.Add(this.btn_TìmSoDienThoai);
-            this.tab_DanhSachNhanVien.Controls.Add(this.tbx_TimSoDienThoai);
-            this.tab_DanhSachNhanVien.Controls.Add(this.dgv_DanhSachNhanVien);
+            this.tab_DanhSachNhanVien.Controls.Add(this.groupBox2);
+            this.tab_DanhSachNhanVien.Controls.Add(this.groupBox1);
             this.tab_DanhSachNhanVien.Location = new System.Drawing.Point(4, 33);
             this.tab_DanhSachNhanVien.Margin = new System.Windows.Forms.Padding(10);
             this.tab_DanhSachNhanVien.Name = "tab_DanhSachNhanVien";
             this.tab_DanhSachNhanVien.Padding = new System.Windows.Forms.Padding(10);
-            this.tab_DanhSachNhanVien.Size = new System.Drawing.Size(1096, 689);
+            this.tab_DanhSachNhanVien.Size = new System.Drawing.Size(1666, 1018);
             this.tab_DanhSachNhanVien.TabIndex = 0;
             this.tab_DanhSachNhanVien.Text = "Danh sách nhân viên";
             this.tab_DanhSachNhanVien.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dgv_DanhSachNhanVien);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.groupBox2.Location = new System.Drawing.Point(10, 110);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1646, 898);
+            this.groupBox2.TabIndex = 8;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Danh sách nhân viên";
+            // 
+            // dgv_DanhSachNhanVien
+            // 
+            this.dgv_DanhSachNhanVien.BackgroundColor = System.Drawing.Color.White;
+            this.dgv_DanhSachNhanVien.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgv_DanhSachNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_DanhSachNhanVien.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_DanhSachNhanVien.Location = new System.Drawing.Point(3, 24);
+            this.dgv_DanhSachNhanVien.Name = "dgv_DanhSachNhanVien";
+            this.dgv_DanhSachNhanVien.RowHeadersWidth = 51;
+            this.dgv_DanhSachNhanVien.RowTemplate.Height = 24;
+            this.dgv_DanhSachNhanVien.Size = new System.Drawing.Size(1640, 871);
+            this.dgv_DanhSachNhanVien.TabIndex = 2;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.tbx_TimSoDienThoai);
+            this.groupBox1.Controls.Add(this.btn_TìmSoDienThoai);
+            this.groupBox1.Controls.Add(this.btn_SuaNhanVien);
+            this.groupBox1.Controls.Add(this.btn_XoaNhanVien);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.groupBox1.Location = new System.Drawing.Point(10, 10);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1646, 100);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Thao tác";
+            // 
+            // tbx_TimSoDienThoai
+            // 
+            this.tbx_TimSoDienThoai.ForeColor = System.Drawing.Color.DarkGray;
+            this.tbx_TimSoDienThoai.Location = new System.Drawing.Point(43, 37);
+            this.tbx_TimSoDienThoai.Name = "tbx_TimSoDienThoai";
+            this.tbx_TimSoDienThoai.Size = new System.Drawing.Size(263, 28);
+            this.tbx_TimSoDienThoai.TabIndex = 3;
+            this.tbx_TimSoDienThoai.Text = "Nhập số điện thoại";
+            // 
+            // btn_TìmSoDienThoai
+            // 
+            this.btn_TìmSoDienThoai.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btn_TìmSoDienThoai.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btn_TìmSoDienThoai.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.btn_TìmSoDienThoai.Location = new System.Drawing.Point(321, 37);
+            this.btn_TìmSoDienThoai.Name = "btn_TìmSoDienThoai";
+            this.btn_TìmSoDienThoai.Size = new System.Drawing.Size(110, 32);
+            this.btn_TìmSoDienThoai.TabIndex = 4;
+            this.btn_TìmSoDienThoai.Text = "Tìm kiếm";
+            this.btn_TìmSoDienThoai.UseVisualStyleBackColor = false;
             // 
             // btn_SuaNhanVien
             // 
             this.btn_SuaNhanVien.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btn_SuaNhanVien.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btn_SuaNhanVien.Location = new System.Drawing.Point(857, 13);
+            this.btn_SuaNhanVien.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.btn_SuaNhanVien.Location = new System.Drawing.Point(437, 37);
             this.btn_SuaNhanVien.Name = "btn_SuaNhanVien";
             this.btn_SuaNhanVien.Size = new System.Drawing.Size(110, 32);
             this.btn_SuaNhanVien.TabIndex = 6;
@@ -97,43 +162,13 @@
             // 
             this.btn_XoaNhanVien.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btn_XoaNhanVien.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btn_XoaNhanVien.Location = new System.Drawing.Point(973, 13);
+            this.btn_XoaNhanVien.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.btn_XoaNhanVien.Location = new System.Drawing.Point(553, 37);
             this.btn_XoaNhanVien.Name = "btn_XoaNhanVien";
             this.btn_XoaNhanVien.Size = new System.Drawing.Size(110, 32);
             this.btn_XoaNhanVien.TabIndex = 5;
             this.btn_XoaNhanVien.Text = "Xóa";
             this.btn_XoaNhanVien.UseVisualStyleBackColor = false;
-            // 
-            // btn_TìmSoDienThoai
-            // 
-            this.btn_TìmSoDienThoai.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btn_TìmSoDienThoai.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btn_TìmSoDienThoai.Location = new System.Drawing.Point(741, 13);
-            this.btn_TìmSoDienThoai.Name = "btn_TìmSoDienThoai";
-            this.btn_TìmSoDienThoai.Size = new System.Drawing.Size(110, 32);
-            this.btn_TìmSoDienThoai.TabIndex = 4;
-            this.btn_TìmSoDienThoai.Text = "Tìm kiếm";
-            this.btn_TìmSoDienThoai.UseVisualStyleBackColor = false;
-            // 
-            // tbx_TimSoDienThoai
-            // 
-            this.tbx_TimSoDienThoai.ForeColor = System.Drawing.Color.DarkGray;
-            this.tbx_TimSoDienThoai.Location = new System.Drawing.Point(463, 13);
-            this.tbx_TimSoDienThoai.Name = "tbx_TimSoDienThoai";
-            this.tbx_TimSoDienThoai.Size = new System.Drawing.Size(263, 32);
-            this.tbx_TimSoDienThoai.TabIndex = 3;
-            this.tbx_TimSoDienThoai.Text = "Nhập số điện thoại";
-            // 
-            // dgv_DanhSachNhanVien
-            // 
-            this.dgv_DanhSachNhanVien.BackgroundColor = System.Drawing.Color.White;
-            this.dgv_DanhSachNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_DanhSachNhanVien.Location = new System.Drawing.Point(3, 73);
-            this.dgv_DanhSachNhanVien.Name = "dgv_DanhSachNhanVien";
-            this.dgv_DanhSachNhanVien.RowHeadersWidth = 51;
-            this.dgv_DanhSachNhanVien.RowTemplate.Height = 24;
-            this.dgv_DanhSachNhanVien.Size = new System.Drawing.Size(1090, 603);
-            this.dgv_DanhSachNhanVien.TabIndex = 2;
             // 
             // tab_TaoNhanVien
             // 
@@ -151,7 +186,7 @@
             this.tab_TaoNhanVien.Location = new System.Drawing.Point(4, 33);
             this.tab_TaoNhanVien.Name = "tab_TaoNhanVien";
             this.tab_TaoNhanVien.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_TaoNhanVien.Size = new System.Drawing.Size(1096, 689);
+            this.tab_TaoNhanVien.Size = new System.Drawing.Size(1666, 1018);
             this.tab_TaoNhanVien.TabIndex = 2;
             this.tab_TaoNhanVien.Text = "Tạo nhân viên";
             this.tab_TaoNhanVien.UseVisualStyleBackColor = true;
@@ -176,9 +211,10 @@
             // 
             this.btn_HoanThanh.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btn_HoanThanh.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btn_HoanThanh.Location = new System.Drawing.Point(814, 602);
+            this.btn_HoanThanh.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.btn_HoanThanh.Location = new System.Drawing.Point(601, 259);
             this.btn_HoanThanh.Name = "btn_HoanThanh";
-            this.btn_HoanThanh.Size = new System.Drawing.Size(183, 32);
+            this.btn_HoanThanh.Size = new System.Drawing.Size(396, 32);
             this.btn_HoanThanh.TabIndex = 39;
             this.btn_HoanThanh.Text = "Hoàn thành";
             this.btn_HoanThanh.UseVisualStyleBackColor = false;
@@ -276,11 +312,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tcl_SanPham);
             this.Name = "UC_NhanVien";
-            this.Size = new System.Drawing.Size(1104, 726);
+            this.Size = new System.Drawing.Size(1674, 1055);
             this.tcl_SanPham.ResumeLayout(false);
             this.tab_DanhSachNhanVien.ResumeLayout(false);
-            this.tab_DanhSachNhanVien.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSachNhanVien)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tab_TaoNhanVien.ResumeLayout(false);
             this.tab_TaoNhanVien.PerformLayout();
             this.ResumeLayout(false);
@@ -308,5 +346,7 @@
         public System.Windows.Forms.TextBox tbx_TenNhanVien;
         public System.Windows.Forms.Label label10;
         public System.Windows.Forms.TextBox tbx_SoDienThoai;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

@@ -30,11 +30,13 @@
         {
             this.tcl_SanPham = new System.Windows.Forms.TabControl();
             this.tab_DanhSachKhuyenMai = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dgv_DanhSachMaKhuyenMai = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tbx_TimMaKhuyenMai = new System.Windows.Forms.TextBox();
+            this.btn_TìmMaKhuyenMai = new System.Windows.Forms.Button();
             this.btn_SuaMaKhuyenMai = new System.Windows.Forms.Button();
             this.btn_XoaMaKhuyenMai = new System.Windows.Forms.Button();
-            this.btn_TìmMaKhuyenMai = new System.Windows.Forms.Button();
-            this.tbx_TimMaKhuyenMai = new System.Windows.Forms.TextBox();
-            this.dgv_DanhSachMaKhuyenMai = new System.Windows.Forms.DataGridView();
             this.tab_TaoKhuyenMai = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
             this.dtp_NgayKetThuc = new System.Windows.Forms.DateTimePicker();
@@ -52,7 +54,9 @@
             this.tbx_MaKhuyenMai = new System.Windows.Forms.TextBox();
             this.tcl_SanPham.SuspendLayout();
             this.tab_DanhSachKhuyenMai.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSachMaKhuyenMai)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.tab_TaoKhuyenMai.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,30 +69,91 @@
             this.tcl_SanPham.Location = new System.Drawing.Point(0, 0);
             this.tcl_SanPham.Name = "tcl_SanPham";
             this.tcl_SanPham.SelectedIndex = 0;
-            this.tcl_SanPham.Size = new System.Drawing.Size(1104, 726);
+            this.tcl_SanPham.Size = new System.Drawing.Size(1674, 1055);
             this.tcl_SanPham.TabIndex = 3;
             // 
             // tab_DanhSachKhuyenMai
             // 
-            this.tab_DanhSachKhuyenMai.Controls.Add(this.btn_SuaMaKhuyenMai);
-            this.tab_DanhSachKhuyenMai.Controls.Add(this.btn_XoaMaKhuyenMai);
-            this.tab_DanhSachKhuyenMai.Controls.Add(this.btn_TìmMaKhuyenMai);
-            this.tab_DanhSachKhuyenMai.Controls.Add(this.tbx_TimMaKhuyenMai);
-            this.tab_DanhSachKhuyenMai.Controls.Add(this.dgv_DanhSachMaKhuyenMai);
+            this.tab_DanhSachKhuyenMai.Controls.Add(this.groupBox2);
+            this.tab_DanhSachKhuyenMai.Controls.Add(this.groupBox1);
             this.tab_DanhSachKhuyenMai.Location = new System.Drawing.Point(4, 33);
             this.tab_DanhSachKhuyenMai.Margin = new System.Windows.Forms.Padding(10);
             this.tab_DanhSachKhuyenMai.Name = "tab_DanhSachKhuyenMai";
             this.tab_DanhSachKhuyenMai.Padding = new System.Windows.Forms.Padding(10);
-            this.tab_DanhSachKhuyenMai.Size = new System.Drawing.Size(1096, 689);
+            this.tab_DanhSachKhuyenMai.Size = new System.Drawing.Size(1666, 1018);
             this.tab_DanhSachKhuyenMai.TabIndex = 0;
             this.tab_DanhSachKhuyenMai.Text = "Danh sách mã khuyến mãi";
             this.tab_DanhSachKhuyenMai.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dgv_DanhSachMaKhuyenMai);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.groupBox2.Location = new System.Drawing.Point(10, 114);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1646, 894);
+            this.groupBox2.TabIndex = 8;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Danh sách mã khuyến mãi";
+            // 
+            // dgv_DanhSachMaKhuyenMai
+            // 
+            this.dgv_DanhSachMaKhuyenMai.BackgroundColor = System.Drawing.Color.White;
+            this.dgv_DanhSachMaKhuyenMai.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgv_DanhSachMaKhuyenMai.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_DanhSachMaKhuyenMai.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_DanhSachMaKhuyenMai.Location = new System.Drawing.Point(3, 24);
+            this.dgv_DanhSachMaKhuyenMai.Name = "dgv_DanhSachMaKhuyenMai";
+            this.dgv_DanhSachMaKhuyenMai.RowHeadersWidth = 51;
+            this.dgv_DanhSachMaKhuyenMai.RowTemplate.Height = 24;
+            this.dgv_DanhSachMaKhuyenMai.Size = new System.Drawing.Size(1640, 867);
+            this.dgv_DanhSachMaKhuyenMai.TabIndex = 2;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.tbx_TimMaKhuyenMai);
+            this.groupBox1.Controls.Add(this.btn_TìmMaKhuyenMai);
+            this.groupBox1.Controls.Add(this.btn_SuaMaKhuyenMai);
+            this.groupBox1.Controls.Add(this.btn_XoaMaKhuyenMai);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.groupBox1.Location = new System.Drawing.Point(10, 10);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1646, 104);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Thao tác";
+            // 
+            // tbx_TimMaKhuyenMai
+            // 
+            this.tbx_TimMaKhuyenMai.ForeColor = System.Drawing.Color.DarkGray;
+            this.tbx_TimMaKhuyenMai.Location = new System.Drawing.Point(42, 40);
+            this.tbx_TimMaKhuyenMai.Name = "tbx_TimMaKhuyenMai";
+            this.tbx_TimMaKhuyenMai.Size = new System.Drawing.Size(263, 28);
+            this.tbx_TimMaKhuyenMai.TabIndex = 3;
+            this.tbx_TimMaKhuyenMai.Text = "Nhập mã khuyến mãi";
+            // 
+            // btn_TìmMaKhuyenMai
+            // 
+            this.btn_TìmMaKhuyenMai.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btn_TìmMaKhuyenMai.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btn_TìmMaKhuyenMai.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.btn_TìmMaKhuyenMai.Location = new System.Drawing.Point(320, 40);
+            this.btn_TìmMaKhuyenMai.Name = "btn_TìmMaKhuyenMai";
+            this.btn_TìmMaKhuyenMai.Size = new System.Drawing.Size(110, 32);
+            this.btn_TìmMaKhuyenMai.TabIndex = 4;
+            this.btn_TìmMaKhuyenMai.Text = "Tìm kiếm";
+            this.btn_TìmMaKhuyenMai.UseVisualStyleBackColor = false;
             // 
             // btn_SuaMaKhuyenMai
             // 
             this.btn_SuaMaKhuyenMai.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btn_SuaMaKhuyenMai.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btn_SuaMaKhuyenMai.Location = new System.Drawing.Point(857, 13);
+            this.btn_SuaMaKhuyenMai.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.btn_SuaMaKhuyenMai.Location = new System.Drawing.Point(436, 40);
             this.btn_SuaMaKhuyenMai.Name = "btn_SuaMaKhuyenMai";
             this.btn_SuaMaKhuyenMai.Size = new System.Drawing.Size(110, 32);
             this.btn_SuaMaKhuyenMai.TabIndex = 6;
@@ -100,43 +165,13 @@
             // 
             this.btn_XoaMaKhuyenMai.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btn_XoaMaKhuyenMai.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btn_XoaMaKhuyenMai.Location = new System.Drawing.Point(973, 13);
+            this.btn_XoaMaKhuyenMai.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.btn_XoaMaKhuyenMai.Location = new System.Drawing.Point(552, 40);
             this.btn_XoaMaKhuyenMai.Name = "btn_XoaMaKhuyenMai";
             this.btn_XoaMaKhuyenMai.Size = new System.Drawing.Size(110, 32);
             this.btn_XoaMaKhuyenMai.TabIndex = 5;
             this.btn_XoaMaKhuyenMai.Text = "Xóa";
             this.btn_XoaMaKhuyenMai.UseVisualStyleBackColor = false;
-            // 
-            // btn_TìmMaKhuyenMai
-            // 
-            this.btn_TìmMaKhuyenMai.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btn_TìmMaKhuyenMai.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btn_TìmMaKhuyenMai.Location = new System.Drawing.Point(741, 13);
-            this.btn_TìmMaKhuyenMai.Name = "btn_TìmMaKhuyenMai";
-            this.btn_TìmMaKhuyenMai.Size = new System.Drawing.Size(110, 32);
-            this.btn_TìmMaKhuyenMai.TabIndex = 4;
-            this.btn_TìmMaKhuyenMai.Text = "Tìm kiếm";
-            this.btn_TìmMaKhuyenMai.UseVisualStyleBackColor = false;
-            // 
-            // tbx_TimMaKhuyenMai
-            // 
-            this.tbx_TimMaKhuyenMai.ForeColor = System.Drawing.Color.DarkGray;
-            this.tbx_TimMaKhuyenMai.Location = new System.Drawing.Point(463, 13);
-            this.tbx_TimMaKhuyenMai.Name = "tbx_TimMaKhuyenMai";
-            this.tbx_TimMaKhuyenMai.Size = new System.Drawing.Size(263, 32);
-            this.tbx_TimMaKhuyenMai.TabIndex = 3;
-            this.tbx_TimMaKhuyenMai.Text = "Nhập mã khuyến mãi";
-            // 
-            // dgv_DanhSachMaKhuyenMai
-            // 
-            this.dgv_DanhSachMaKhuyenMai.BackgroundColor = System.Drawing.Color.White;
-            this.dgv_DanhSachMaKhuyenMai.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_DanhSachMaKhuyenMai.Location = new System.Drawing.Point(3, 73);
-            this.dgv_DanhSachMaKhuyenMai.Name = "dgv_DanhSachMaKhuyenMai";
-            this.dgv_DanhSachMaKhuyenMai.RowHeadersWidth = 51;
-            this.dgv_DanhSachMaKhuyenMai.RowTemplate.Height = 24;
-            this.dgv_DanhSachMaKhuyenMai.Size = new System.Drawing.Size(1090, 603);
-            this.dgv_DanhSachMaKhuyenMai.TabIndex = 2;
             // 
             // tab_TaoKhuyenMai
             // 
@@ -157,7 +192,7 @@
             this.tab_TaoKhuyenMai.Location = new System.Drawing.Point(4, 33);
             this.tab_TaoKhuyenMai.Name = "tab_TaoKhuyenMai";
             this.tab_TaoKhuyenMai.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_TaoKhuyenMai.Size = new System.Drawing.Size(1096, 689);
+            this.tab_TaoKhuyenMai.Size = new System.Drawing.Size(1666, 1018);
             this.tab_TaoKhuyenMai.TabIndex = 2;
             this.tab_TaoKhuyenMai.Text = "Tạo khuyến mãi";
             this.tab_TaoKhuyenMai.UseVisualStyleBackColor = true;
@@ -166,9 +201,10 @@
             // 
             this.button1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.button1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button1.Location = new System.Drawing.Point(814, 602);
+            this.button1.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.button1.Location = new System.Drawing.Point(597, 353);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(183, 32);
+            this.button1.Size = new System.Drawing.Size(400, 32);
             this.button1.TabIndex = 39;
             this.button1.Text = "Hoàn thành";
             this.button1.UseVisualStyleBackColor = false;
@@ -304,11 +340,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tcl_SanPham);
             this.Name = "UC_KhuyenMai";
-            this.Size = new System.Drawing.Size(1104, 726);
+            this.Size = new System.Drawing.Size(1674, 1055);
             this.tcl_SanPham.ResumeLayout(false);
             this.tab_DanhSachKhuyenMai.ResumeLayout(false);
-            this.tab_DanhSachKhuyenMai.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSachMaKhuyenMai)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tab_TaoKhuyenMai.ResumeLayout(false);
             this.tab_TaoKhuyenMai.PerformLayout();
             this.ResumeLayout(false);
@@ -339,5 +377,7 @@
         public System.Windows.Forms.TabPage tab_TaoKhuyenMai;
         public System.Windows.Forms.DateTimePicker dtp_NgayKetThuc;
         public System.Windows.Forms.DateTimePicker dtp_NgayBatDau;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
