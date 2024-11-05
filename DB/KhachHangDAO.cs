@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Nhom11
 {
@@ -168,6 +169,24 @@ namespace Nhom11
             }
         }
 
+        //  kiểm tra số điện thoại đã tồn tại trước đó chưa
+        public bool KiemTraTrungSDTKhachHang(string sdt)
+        {
+            bool isDuplicate = false;
 
+            using (SqlConnection connection = DBConnection.GetSqlConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand("SELECT dbo.Fn_KiemTraTrungSDTKhachHang(@sodienthoai)", connection))
+                {
+                    command.Parameters.AddWithValue("@sodienthoai", sdt);
+
+                    isDuplicate = (bool)command.ExecuteScalar();
+                }
+            }
+
+            return isDuplicate;
+        }
     }
 }

@@ -25,19 +25,18 @@ namespace Nhom11
             InitializeComponent();
         }
 
-        public string Sua_taoMoi_khachHang { get => sua_taoMoi_khachHang; set => sua_taoMoi_khachHang = value; }
+        public string Sua_TaoMoi_khachHang { get => sua_taoMoi_khachHang; set => sua_taoMoi_khachHang = value; }
 
+        //  Tạo là cho UC_DonHang, sửa là cho UC_KhachHang
         private void btn_HoanThanh_Click(object sender, EventArgs e)
         {
-            if (Sua_taoMoi_khachHang == "Sửa")
+            if (Sua_TaoMoi_khachHang == "Sửa")
             {
                 SuaKhachHang();
-                
             }    
             else
             {
                 TaoKhachHang();
-                
             }    
         }
 
@@ -58,7 +57,6 @@ namespace Nhom11
 
                 // Đóng form sau khi cập nhật thành công
                 this.Close();
-
             }
             else
             {
@@ -69,20 +67,36 @@ namespace Nhom11
         private void TaoKhachHang()
         {
             // Tạo đối tượng khách hàng
-            KhachHang khachHang = new KhachHang();
+            KhachHang khachHang = new KhachHang
+            {
+                MaKhachHang = BienToanCuc.randomMa9So(),
+                SDT = tbx_SoDienThoai.Text,
+                TenKhachHang = tbx_TenKhachHang.Text,
+                DiaChi = tbx_DiaChi.Text,
+                Gmail = tbx_Gmail.Text
+            };
 
-            // Tạo mã khách hàng mới (GUID)
-            Guid g = Guid.NewGuid();
-            khachHang.MaKhachHang = g.ToString();
+            // Kiểm tra các trường bắt buộc
+            if (string.IsNullOrWhiteSpace(khachHang.SDT) ||
+                string.IsNullOrWhiteSpace(khachHang.TenKhachHang) ||
+                string.IsNullOrWhiteSpace(khachHang.DiaChi) ||
+                string.IsNullOrWhiteSpace(khachHang.Gmail))
+            {
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin bắt buộc", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
-            khachHang.SDT = tbx_SoDienThoai.Text;
-            khachHang.TenKhachHang = tbx_TenKhachHang.Text;
-            khachHang.DiaChi = tbx_DiaChi.Text;
-            khachHang.Gmail = tbx_Gmail.Text;
+            // Kiểm tra trùng số điện thoại
+            if (khachHangDAO.KiemTraTrungSDTKhachHang(khachHang.SDT))
+            {
+                MessageBox.Show("Số điện thoại đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
+            // Thêm khách hàng vào cơ sở dữ liệu
             donHangDAO.themKhachHang(khachHang);
 
-            //  thêm xong thì đóng form
+            // Đóng form sau khi thêm thành công
             this.Close();
         }
 

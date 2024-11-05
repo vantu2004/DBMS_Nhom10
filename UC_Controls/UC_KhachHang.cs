@@ -32,7 +32,7 @@ namespace Nhom11
                 form_TaoKhachHang.LoadThongTinKhachHang(sdt);
 
                 //  set trạng thái dựa vào btn.text để nhận biết khi nào tạo khi nào sửa
-                form_TaoKhachHang.Sua_taoMoi_khachHang = btn_SuaKhachHang.Text;
+                form_TaoKhachHang.Sua_TaoMoi_khachHang = btn_SuaKhachHang.Text;
 
                 form_TaoKhachHang.ShowDialog();
             }

@@ -15,5 +15,19 @@ namespace Nhom11
             get => maNhanVien;
             set => maNhanVien = value;
         }
+
+        public static string randomMa9So()
+        {
+            Random random = new Random();
+            string result = "";
+
+            for (int i = 0; i < 9; i++)
+            {
+                // Tạo một số ngẫu nhiên từ 0 đến 9
+                result += random.Next(0, 10);
+            }
+
+            return result;
+        }
     }
 }

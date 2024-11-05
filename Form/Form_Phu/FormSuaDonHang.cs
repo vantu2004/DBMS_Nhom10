@@ -21,13 +21,13 @@ namespace Nhom11
         public form_SuaDonHang()
         {
             InitializeComponent();
-            //LoadSDTNhanVien_vao_cbx();
             LoadSDTKhachHang_vao_cbx();
             LoadMaKhuyenMai_vao_cbx();
         }
 
         public string MaDonHang { get => maDonHang; set => maDonHang = value; }
 
+        //  trường hợp khách hàng mới thì cho phép tạo, 1 sdt chỉ tương ứng 1 khách hàng và tồn tại duy nhất
         private void btn_KhachHangMoi_Click(object sender, EventArgs e)
         {
             form_TaoKhachHang form_TaoKhachHang = new form_TaoKhachHang();
@@ -42,21 +42,6 @@ namespace Nhom11
         {
             
         }
-
-        //private void LoadSDTNhanVien_vao_cbx()
-        //{
-        //    // Xóa các mục cũ nếu có
-        //    cbx_ChonNhanVien.Items.Clear();
-
-        //    // Lấy danh sách số điện thoại
-        //    List<string> phoneNumbers = donHangDAO.GetDanhSachDienThoaiNhanVien();
-
-        //    // Thêm số điện thoại vào ComboBox
-        //    foreach (string phoneNumber in phoneNumbers)
-        //    {
-        //        cbx_ChonNhanVien.Items.Add(phoneNumber);
-        //    }
-        //}
 
         private void LoadSDTKhachHang_vao_cbx()
         {
