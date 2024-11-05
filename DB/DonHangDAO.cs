@@ -111,6 +111,7 @@ namespace Nhom11.DB
             return dt;
         }
 
+        //  lấy danh sách đơn hàng của 1 khách đã mua bằng số điện thoại
         public DataTable GetDanhSachDonHangMotKhach(string soDienThoai)
         {
             DataTable dt = new DataTable();
@@ -170,23 +171,17 @@ namespace Nhom11.DB
                         }
                     }    
 
-
                     reader.Close();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi: " + ex.Message);
+                    MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
 
             return resultList;
         }
 
-        ////  viết trong này để cbx trong form_SuaDonHang và cbx trong UC_DonHang đều dùng được
-        //public List<string> GetDanhSachDienThoaiNhanVien()
-        //{
-        //    return GetDanhSachTheoHam("dbo.Fn_LayTatCaSoDienThoaiNhanVien()");
-        //}
         //  viết trong này để cbx trong form_SuaDonHang và cbx trong UC_DonHang đều dùng được
         public List<string> GetDanhSachDienThoaiKhachHang()
         {
@@ -198,34 +193,51 @@ namespace Nhom11.DB
             return GetDanhSachTheoHam("dbo.Fn_LayTatCaMaKhuyenMai()");
         }
 
-
-        //  LỖI LOGIC
         public void XoaDonHangTheoMa(string maDonHang)
         {
-            string query = $"EXEC [dbo].[XoaDonBanTheoMa] @MaDonBan = '{maDonHang}';";
-
             using (SqlConnection conn = DBConnection.GetSqlConnection())
             {
-                sqlCommand = new SqlCommand(query, conn);
-                try
+                using (SqlCommand sqlCommand = new SqlCommand("Pr_XoaDonBan", conn))
                 {
-                    conn.Open();
-                    // Thực thi câu lệnh
-                    sqlCommand.ExecuteNonQuery(); 
-                    MessageBox.Show("Xóa thành công");
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Không thể xóa: " + ex.Message);
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                    // Thêm tham số đầu vào
+                    sqlCommand.Parameters.AddWithValue("@Ma_don_ban", maDonHang);
+
+                    // Thêm tham số đầu ra để lấy thông báo
+                    SqlParameter messageParam = new SqlParameter("@Message", SqlDbType.NVarChar, 100)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    sqlCommand.Parameters.Add(messageParam);
+
+                    try
+                    {
+                        conn.Open();
+
+                        // Thực thi stored procedure
+                        sqlCommand.ExecuteNonQuery();
+
+                        // Lấy thông báo từ tham số đầu ra
+                        string message = messageParam.Value.ToString();
+
+                        // Hiển thị thông báo lên MessageBox
+                        MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Không thể xóa: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
+
 
         //  tạo mới khách hàng
         public void themKhachHang(KhachHang khachHang)
         {
             // Gọi stored procedure để thêm khách hàng
-            string query = "EXEC [dbo].[ThemKhachHang] @Ma_khach_hang, @SDT, @Ten_khach_hang, @Dia_chi, @Gmail;";
+            string query = "EXEC [dbo].[Pr_ThemKhachHang] @Ma_khach_hang, @SDT, @Ten_khach_hang, @Dia_chi, @Gmail;";
 
             using (SqlConnection conn = DBConnection.GetSqlConnection())
             {
@@ -242,11 +254,11 @@ namespace Nhom11.DB
                     {
                         conn.Open();
                         sqlCommand.ExecuteNonQuery(); // Thực thi câu lệnh
-                        MessageBox.Show("Thêm khách hàng thành công.");
+                        MessageBox.Show("Thêm mới khách hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Không thể thêm khách hàng: " + ex.Message);
+                        MessageBox.Show("Không thể tạo mới khách hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
@@ -256,7 +268,7 @@ namespace Nhom11.DB
         public List<string> DienThongTinDonHang(string maDonHang)
         {
             List<string> resultList = new List<string>();
-            string query = $"SELECT * FROM dbo.GetOrderDetails('{maDonHang}')";
+            string query = $"SELECT * FROM dbo.Fn_DienThongTinDonHang('{maDonHang}')";
 
             using (SqlConnection connection = DBConnection.GetSqlConnection())
             {
@@ -296,7 +308,7 @@ namespace Nhom11.DB
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi: " + ex.Message);
+                    MessageBox.Show("Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
 
@@ -304,7 +316,7 @@ namespace Nhom11.DB
         }
 
         // Tính tổng tiền 1 đơn hàng chưa trừ khuyến mãi
-        public string TinhTongTien1DonHang(string maDonBan)
+        public decimal TinhTongTien1DonHang(string maDonBan)
         {
             // Gọi hàm để tính tổng tiền
             string query = $"SELECT dbo.Fn_TongTien1DonHang('{maDonBan}') AS NetTotalAmount";
@@ -323,13 +335,12 @@ namespace Nhom11.DB
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Lỗi tính toán: " + ex.Message);
+                        MessageBox.Show("Lỗi tính toán " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
-            return tongTien;
+            return Convert.ToDecimal(tongTien);
         }
-
 
         //  lấy chiết khấu từ mã khuyến mãi truyền vào
         public decimal GetChietKhau(string maKhuyenMai)
@@ -345,13 +356,12 @@ namespace Nhom11.DB
                     try
                     {
                         conn.Open();
-                        // Sử dụng ExecuteScalar để lấy giá trị trả về
                         var result = sqlCommand.ExecuteScalar();
                         chietKhau = Convert.ToDecimal(result.ToString());
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Lỗi tính toán: " + ex.Message);
+                        MessageBox.Show("Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
@@ -389,7 +399,6 @@ namespace Nhom11.DB
 
             return listFilter;
         }
-
 
         //  load danh sách điện thoại đã được lọc theo filter
         public DataTable GetDanhSachDonHangTheoFilter(string tenDongMay, string manHinh, string dungLuongPin, string mauSac)
@@ -446,7 +455,7 @@ namespace Nhom11.DB
                     catch (Exception ex)
                     {
                         // Xử lý ngoại lệ
-                        Console.WriteLine("Lỗi: " + ex.Message);
+                        MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
@@ -485,19 +494,20 @@ namespace Nhom11.DB
             return maKhachHang;
         }
 
+        //  LỖI LOGIC
         //  sửa đơn bán dựa vào mã đơn bán, sửa 4 thuộc tính truyền vào
-        public void SuaDonBan(string maDonBan, string newMaKhachHang, string newMaKhuyenMai, decimal soTienTra, decimal triGia)
+        public void SuaDonBan(string maDonBan, string newMaKhachHang, string newMaKhuyenMai, decimal soTienTra, decimal tongHoaDonSauKM)
         {
-            MessageBox.Show(maDonBan + "\n" + newMaKhachHang + "\n" + newMaKhuyenMai + "\n" + soTienTra + "\n" + triGia);
+            MessageBox.Show(maDonBan + "\n" + newMaKhachHang + "\n" + newMaKhuyenMai + "\n" + soTienTra + "\n" + tongHoaDonSauKM);
             // Kiểm tra mã khách hàng không được null
-            if (string.IsNullOrWhiteSpace(newMaKhachHang))
+            if (string.IsNullOrEmpty(newMaKhachHang))
             {
-                MessageBox.Show("Mã khách hàng không được phép để trống.");
+                MessageBox.Show("Không để trống thông tin khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return; // Ngưng thực hiện nếu mã khách hàng là null
             }
 
             // Chuỗi truy vấn
-            string query = "EXEC Fn_SuaDonBan @Ma_don_ban, @Ma_khach_hang, @Ma_khuyen_mai, @So_tien_tra, @Tri_gia";
+            string query = "EXEC Pr_SuaDonBan @Ma_don_ban, @Ma_khach_hang, @Ma_khuyen_mai, @So_tien_tra, @Tri_gia";
 
             using (SqlConnection conn = DBConnection.GetSqlConnection())
             {
@@ -518,7 +528,7 @@ namespace Nhom11.DB
                     }
 
                     sqlCommand.Parameters.AddWithValue("@So_tien_tra", soTienTra);
-                    sqlCommand.Parameters.AddWithValue("@Tri_gia", triGia);
+                    sqlCommand.Parameters.AddWithValue("@Tri_gia", tongHoaDonSauKM);
 
                     try
                     {
@@ -547,19 +557,16 @@ namespace Nhom11.DB
             }
         }
 
-
         public void ThemDonHangMoi(DonBan donBan)
         {
-            string query = @"INSERT INTO DON_BAN 
-                     (Ma_don_ban, Ngay_tao_don, Gio_tao_don, Tri_gia, SL_dien_thoai, So_tien_tra, Trang_thai, Ma_khach_hang, Ma_nhan_vien, Ma_khuyen_mai)
-                     VALUES 
-                     (@Ma_don_ban, @Ngay_tao_don, @Gio_tao_don, @Tri_gia, @SL_dien_thoai, @So_tien_tra, @Trang_thai, @Ma_khach_hang, @Ma_nhan_vien, @Ma_khuyen_mai)";
-
             using (SqlConnection conn = DBConnection.GetSqlConnection())
             {
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlCommand cmd = new SqlCommand("Pr_TaoDonBan", conn))
                 {
-                    // Thêm các tham số cho câu lệnh SQL
+                    // Đặt kiểu là Stored Procedure
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Thêm các tham số cho Stored Procedure
                     cmd.Parameters.AddWithValue("@Ma_don_ban", donBan.MaDonBan);
                     cmd.Parameters.AddWithValue("@Ngay_tao_don", donBan.NgayTaoDon);
                     cmd.Parameters.AddWithValue("@Gio_tao_don", donBan.GioTaoDon);
@@ -575,19 +582,13 @@ namespace Nhom11.DB
 
                     try
                     {
-                        // Mở kết nối
                         conn.Open();
-
-                        // Thực thi câu lệnh
                         cmd.ExecuteNonQuery();
-
-                        // Thông báo khi chèn thành công
-                        MessageBox.Show("Đã thêm thành công đơn bán.");
+                        MessageBox.Show("Tạo đơn bán thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
-                        // Xử lý ngoại lệ nếu có lỗi xảy ra
-                        MessageBox.Show("Lỗi khi chèn đơn bán: " + ex.Message);
+                        MessageBox.Show("Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
@@ -602,7 +603,7 @@ namespace Nhom11.DB
                 // Lặp qua từng IMEI trong danh sách
                 foreach (var imei in imeiList)
                 {
-                    using (SqlCommand sqlCommand = new SqlCommand("Fn_ThemVaoChiTietDonHang", conn))
+                    using (SqlCommand sqlCommand = new SqlCommand("Pr_ThemVaoChiTietDonHang", conn))
                     {
                         sqlCommand.CommandType = CommandType.StoredProcedure;
 
@@ -612,12 +613,11 @@ namespace Nhom11.DB
 
                         try
                         {
-                            // Thực thi lệnh
-                            int rowsAffected = sqlCommand.ExecuteNonQuery();
+                            sqlCommand.ExecuteNonQuery();
                         }
                         catch (SqlException ex)
                         {
-                            MessageBox.Show($"Lỗi: {ex.Message}");
+                            MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }

@@ -33,22 +33,21 @@ namespace Nhom11
 
             string maDonHang = tbx_MaDonHang.Text;
 
-           
+            //  lấy thông tin đơn hàng để fill vào form
             List<string> thongTinDonHang = donHangDAO.DienThongTinDonHang(maDonHang);
 
-            //   kiểm tra nếu nhập đúng mã đơn bán thì fill, ko đúng thì thôi
+            //  kiểm tra nếu nhập đúng mã đơn bán thì fill, ko đúng thì thôi
             if (thongTinDonHang != null)
             {
-                //form_SuaDonHang.cbx_ChonNhanVien.Text = thongTinDonHang[13];
                 form_SuaDonHang.cbx_ChonKhachHang.Text = thongTinDonHang[7];
                 form_SuaDonHang.cbx_ChonKhuyenMai.Text = thongTinDonHang[9];
 
-                string tongTien1DonHang = donHangDAO.TinhTongTien1DonHang(maDonHang);
-                form_SuaDonHang.lbl_TongHoaDon.Text = tongTien1DonHang;
-                form_SuaDonHang.lbl_TongHoaDonSauKM.Text = tongTien1DonHang;
+                decimal tongTien1DonHang = donHangDAO.TinhTongTien1DonHang(maDonHang);
+                form_SuaDonHang.lbl_TongHoaDon.Text = tongTien1DonHang.ToString();
+                //  lúc này chưa áp dụng khuyến mãi nên gán mặc định là tổng tiền sau thuế
+                form_SuaDonHang.lbl_TongHoaDonSauKM.Text = tongTien1DonHang.ToString();
                 form_SuaDonHang.MaDonHang = maDonHang;
 
-                // Trong form chính
                 form_SuaDonHang.ShowDialog();
             }
         }
@@ -58,7 +57,7 @@ namespace Nhom11
             form_TaoKhachHang form_TaoKhachHang = new form_TaoKhachHang();
 
             //  set trạng thái dựa vào btn.text để nhận biết khi nào tạo khi nào sửa
-            form_TaoKhachHang.Sua_taoMoi_khachHang = btn_KhachHangMoi.Text;
+            form_TaoKhachHang.Sua_TaoMoi_khachHang = btn_KhachHangMoi.Text;
 
             form_TaoKhachHang.ShowDialog();
 
@@ -81,6 +80,7 @@ namespace Nhom11
             }
         }
 
+        //  Click vào để đổ ra chi tiết đơn bán
         private void dgv_DanhSachDonHang_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Kiểm tra nếu click vào hàng hợp lệ
@@ -88,21 +88,17 @@ namespace Nhom11
             {
                 // Lấy dữ liệu từ dòng đã chọn
                 var selectedRow = dgv_DanhSachDonHang.Rows[e.RowIndex];
+                // Lấy mã đơn bán từ dòng đang chọn
                 var maDonBan = selectedRow.Cells["Mã đơn bán"].Value;
-
-                // Lấy % chiết khấu
+                // Lấy % chiết khấu từ dòng đang chọn
                 var chietKhau = selectedRow.Cells["Chiết khấu"].Value;
+
                 decimal decimal_chietKhau = 0;
 
                 // Kiểm tra và chuyển đổi giá trị chiết khấu
-                if (chietKhau != null && !string.IsNullOrEmpty(chietKhau.ToString()))
+                if (!string.IsNullOrEmpty(chietKhau.ToString()))
                 {
-                    bool isDecimal = decimal.TryParse(chietKhau.ToString(), out decimal_chietKhau);
-                    if (!isDecimal)
-                    {
-                        MessageBox.Show("Chiết khấu không phải là giá trị hợp lệ.");
-                        return;
-                    }
+                    decimal_chietKhau = Convert.ToDecimal(chietKhau.ToString());
                 }
 
                 try
@@ -113,19 +109,19 @@ namespace Nhom11
                     dgv_ChiTietDonHang.DataSource = dt;
 
                     // Tính toán tổng tiền (chưa trừ khuyến mãi) 1 đơn
-                    decimal tongTien1DonHang = Convert.ToDecimal(donHangDAO.TinhTongTien1DonHang(maDonBan.ToString()));
+                    decimal tongTien1DonHang = donHangDAO.TinhTongTien1DonHang(maDonBan.ToString());
                     lbl_TongHoaDon_DanhSach.Text = Math.Round(tongTien1DonHang, 2).ToString();
 
                     lbl_TongHoaDonSauKM_DanhSach.Text = Math.Round((tongTien1DonHang - decimal_chietKhau * tongTien1DonHang / 100), 2).ToString();
                 }
                 catch (Exception ex)
                 {
-                    // Hiển thị thông báo lỗi nếu có
-                    MessageBox.Show("Lỗi: " + ex.Message);
+                    MessageBox.Show("Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
 
+        //  load dang sách điện thoại có sẵn và thêm button cho từng dòng
         private void LoadDanhSachDienThoaiCoSan()
         {
             try
@@ -156,11 +152,11 @@ namespace Nhom11
             catch (Exception ex)
             {
                 // Hiển thị thông báo lỗi nếu có
-                MessageBox.Show("Lỗi: " + ex.Message);
+                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
         }
 
+        //  check sự kiện thêm điện thoại vào mục tạo đơn bán
         private void dgv_DanhSachDienThoaiSanCo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // Kiểm tra nếu cột được click là cột Button
@@ -186,13 +182,12 @@ namespace Nhom11
                     // Kiểm tra trùng IMEI trước khi thêm
                     foreach (DataRow row in dt.Rows)
                     {
-                        string newImei = row["Mã Imei"].ToString();
                         bool isDuplicate = false;
 
                         // Kiểm tra trong currentData xem đã có IMEI này chưa
                         foreach (DataRow existingRow in currentData.Rows)
                         {
-                            if (existingRow["Mã Imei"].ToString() == newImei)
+                            if (existingRow["Mã Imei"].ToString() == imei)
                             {
                                 isDuplicate = true;
                                 break;
@@ -209,8 +204,8 @@ namespace Nhom11
                         }
                         else
                         {
-                            MessageBox.Show("Điện thoại đã được thêm");
-                        }    
+                            MessageBox.Show("Điện thoại đã được thêm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
 
                     // Gán dữ liệu vào DataGridView
@@ -218,8 +213,7 @@ namespace Nhom11
                 }
                 catch (Exception ex)
                 {
-                    // Hiển thị thông báo lỗi nếu có
-                    MessageBox.Show("Lỗi: " + ex.Message);
+                    MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
@@ -241,6 +235,7 @@ namespace Nhom11
         //    dgv_DanhSachDienThoaiSanCo.CellContentClick += dgv_DanhSachDienThoaiSanCo_CellContentClick;
         //}
 
+        //  cứ mỗi lần thêm điện thoại vào danh sách điện thoại đã thêm thì cập nhật tổng tiền
         private void CapNhatTongTien(DataTable currentData)
         {
             decimal tongTien = 0;
@@ -261,7 +256,6 @@ namespace Nhom11
             lbl_TongHoaDon.Text = Math.Round(tongTien, 2).ToString();
             lbl_TongHoaDonSauKM.Text = Math.Round(tongTien, 2).ToString();
         }
-
 
         private void btn_TìmDonHang_Click(object sender, EventArgs e)
         {
@@ -311,7 +305,6 @@ namespace Nhom11
             }
         }
 
-        //  LỖI LOGIC
         private void btn_XoaDonHang_Click(object sender, EventArgs e)
         {
             string maDonHang = tbx_MaDonHang.Text;
@@ -325,13 +318,25 @@ namespace Nhom11
 
             foreach (var listFilter in listFilters)
             {
-                cbx_TenDienThoai.Items.Add(listFilter.TenDongMay);
+                if (!cbx_TenDienThoai.Items.Contains(listFilter.TenDongMay))
+                {
+                    cbx_TenDienThoai.Items.Add(listFilter.TenDongMay);
+                }
 
-                cbx_ManHinh.Items.Add(listFilter.ManHinh);
+                if (!cbx_ManHinh.Items.Contains(listFilter.ManHinh))
+                {
+                    cbx_ManHinh.Items.Add(listFilter.ManHinh);
+                }
 
-                cbx_Pin.Items.Add(listFilter.Pin);
+                if (!cbx_Pin.Items.Contains(listFilter.Pin))
+                {
+                    cbx_Pin.Items.Add(listFilter.Pin);
+                }
 
-                cbx_MauSac.Items.Add(listFilter.MauSac);
+                if (!cbx_MauSac.Items.Contains(listFilter.MauSac))
+                {
+                    cbx_MauSac.Items.Add(listFilter.MauSac);
+                }
             }
         }
 
@@ -365,7 +370,7 @@ namespace Nhom11
 
             if (!isValid)
             {
-                MessageBox.Show("Cần thêm sản phẩm.");
+                MessageBox.Show("Hóa đơn rỗng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -387,7 +392,7 @@ namespace Nhom11
             }
             else
             {
-                MessageBox.Show("Tạo đơn không thành công");
+                MessageBox.Show("Tạo đơn bán không thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -395,22 +400,24 @@ namespace Nhom11
         {
             DonBan donBan = new DonBan();
 
-            donBan.MaDonBan = RandomMaDonHang();
+            donBan.MaDonBan = BienToanCuc.randomMa9So();
 
             var dt = LayThoiGianHienTai();
             donBan.NgayTaoDon = dt.Item1;
             donBan.GioTaoDon = dt.Item2;
 
+            //  để tự bật trigger tính riêng
             donBan.TriGia = 0;
             donBan.SoLuongDT = 0;
 
-            if (!string.IsNullOrEmpty(tbx_TongKhachDua.Text))
+            decimal tongKhachDua;
+            bool isValid = decimal.TryParse(tbx_TongKhachDua.Text, out tongKhachDua);
+            if (isValid)
             {
                 donBan.SoTienTra = Convert.ToDecimal(tbx_TongKhachDua.Text);
             }
             else
             {
-                MessageBox.Show("Cần nhập số tiền khách đưa!");
                 return null;
             }
 
@@ -424,11 +431,11 @@ namespace Nhom11
             }
             else
             {
-                MessageBox.Show("Hãy chọn khách hàng!");
                 return null;
             }
 
-            donBan.MaNhanVien = null;
+            //????????????????????????
+            donBan.MaNhanVien = BienToanCuc.MaNhanVien;
 
             if (!string.IsNullOrEmpty(cbx_ChonKhuyenMai.Text))
             {
@@ -447,8 +454,9 @@ namespace Nhom11
             decimal tongHoaDonSauKM = 0;
             string trangThai = "Chưa hoàn thành";
 
-            // Kiểm tra null hoặc chuỗi rỗng cho tbx_TongKhachDua.Text và lbl_TongHoaDonSauKM.Text
-            if (!string.IsNullOrEmpty(tbx_TongKhachDua.Text) && !string.IsNullOrEmpty(lbl_TongHoaDonSauKM.Text))
+            decimal tongHoaDon;
+            bool isValid = decimal.TryParse(lbl_TongHoaDonSauKM.Text, out tongHoaDon);
+            if (isValid)
             {
                 // Chuyển đổi giá trị của tbx_TongKhachDua thành decimal
                 tongKhachDua = Math.Round(Convert.ToDecimal(tbx_TongKhachDua.Text), 2);
@@ -459,7 +467,6 @@ namespace Nhom11
             }
             else
             {
-                MessageBox.Show("Cần nhập số tiền khách đưa!");
                 return null;
             }    
         }
@@ -470,11 +477,6 @@ namespace Nhom11
             string time = currentDateTime.ToString("HH:mm:ss");
 
             return (date, time); // Trả về một Tuple gồm 2 giá trị
-        }
-        private string RandomMaDonHang()
-        {
-            Guid g = Guid.NewGuid();
-            return g.ToString();
         }
         private List<string> LayDanhSachImeiDaThem()
         {
