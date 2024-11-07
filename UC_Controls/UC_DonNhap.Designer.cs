@@ -338,12 +338,14 @@
             // 
             this.btn_TaoImei.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btn_TaoImei.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btn_TaoImei.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_TaoImei.Location = new System.Drawing.Point(282, 295);
             this.btn_TaoImei.Name = "btn_TaoImei";
             this.btn_TaoImei.Size = new System.Drawing.Size(105, 32);
             this.btn_TaoImei.TabIndex = 64;
             this.btn_TaoImei.Text = "Mới";
             this.btn_TaoImei.UseVisualStyleBackColor = false;
+            this.btn_TaoImei.Click += new System.EventHandler(this.btn_TaoImei_Click);
             // 
             // label7
             // 
@@ -390,6 +392,7 @@
             // 
             this.btn_TaoDongMay.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btn_TaoDongMay.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btn_TaoDongMay.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_TaoDongMay.Location = new System.Drawing.Point(282, 371);
             this.btn_TaoDongMay.Name = "btn_TaoDongMay";
             this.btn_TaoDongMay.Size = new System.Drawing.Size(105, 32);
@@ -424,6 +427,7 @@
             // 
             this.btn_TaoNhaCungCap.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btn_TaoNhaCungCap.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btn_TaoNhaCungCap.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_TaoNhaCungCap.Location = new System.Drawing.Point(278, 73);
             this.btn_TaoNhaCungCap.Name = "btn_TaoNhaCungCap";
             this.btn_TaoNhaCungCap.Size = new System.Drawing.Size(105, 32);
