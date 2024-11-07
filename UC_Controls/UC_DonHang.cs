@@ -44,8 +44,18 @@ namespace Nhom11
 
                 decimal tongTien1DonHang = donHangDAO.TinhTongTien1DonHang(maDonHang);
                 form_SuaDonHang.lbl_TongHoaDon.Text = tongTien1DonHang.ToString();
-                //  lúc này chưa áp dụng khuyến mãi nên gán mặc định là tổng tiền sau thuế
-                form_SuaDonHang.lbl_TongHoaDonSauKM.Text = tongTien1DonHang.ToString();
+
+                decimal chietKhau;
+                bool isValidChietKhau = decimal.TryParse(thongTinDonHang[10], out chietKhau);
+                if (isValidChietKhau)
+                {
+                    form_SuaDonHang.lbl_TongHoaDonSauKM.Text = Math.Round(tongTien1DonHang - tongTien1DonHang * chietKhau / 100, 2).ToString();
+                }
+                else
+                {
+                    form_SuaDonHang.lbl_TongHoaDonSauKM.Text = Math.Round(tongTien1DonHang, 2).ToString();
+                }    
+
                 form_SuaDonHang.MaDonHang = maDonHang;
 
                 form_SuaDonHang.ShowDialog();
@@ -90,16 +100,18 @@ namespace Nhom11
                 var selectedRow = dgv_DanhSachDonHang.Rows[e.RowIndex];
                 // Lấy mã đơn bán từ dòng đang chọn
                 var maDonBan = selectedRow.Cells["Mã đơn bán"].Value;
-                // Lấy % chiết khấu từ dòng đang chọn
-                var chietKhau = selectedRow.Cells["Chiết khấu"].Value;
+                //// Lấy % chiết khấu từ dòng đang chọn
+                //var chietKhau = selectedRow.Cells["Chiết khấu"].Value;
+                // Lấy trị giá từ dòng đang chọn
+                var triGia = selectedRow.Cells["Trị giá"].Value;
 
-                decimal decimal_chietKhau = 0;
+                //decimal decimal_chietKhau = 0;
 
-                // Kiểm tra và chuyển đổi giá trị chiết khấu
-                if (!string.IsNullOrEmpty(chietKhau.ToString()))
-                {
-                    decimal_chietKhau = Convert.ToDecimal(chietKhau.ToString());
-                }
+                //// Kiểm tra và chuyển đổi giá trị chiết khấu
+                //if (!string.IsNullOrEmpty(chietKhau.ToString()))
+                //{
+                //    decimal_chietKhau = Convert.ToDecimal(chietKhau.ToString());
+                //}
 
                 try
                 {
@@ -109,10 +121,12 @@ namespace Nhom11
                     dgv_ChiTietDonHang.DataSource = dt;
 
                     // Tính toán tổng tiền (chưa trừ khuyến mãi) 1 đơn
-                    decimal tongTien1DonHang = donHangDAO.TinhTongTien1DonHang(maDonBan.ToString());
-                    lbl_TongHoaDon_DanhSach.Text = Math.Round(tongTien1DonHang, 2).ToString();
+                    decimal tongTien1DonHang = Math.Round(Convert.ToDecimal(triGia.ToString()), 2);
 
-                    lbl_TongHoaDonSauKM_DanhSach.Text = Math.Round((tongTien1DonHang - decimal_chietKhau * tongTien1DonHang / 100), 2).ToString();
+                    //  mặc định tổng tiền hóa đơn trc khuyến mãi
+                    lbl_TongHoaDon_DanhSach.Text = donHangDAO.TinhTongTien1DonHang(maDonBan.ToString()).ToString();
+                    //  mặc định tổng tiền sau khuyến mãi bằng trị giá
+                    lbl_TongHoaDonSauKM_DanhSach.Text = triGia.ToString();
                 }
                 catch (Exception ex)
                 {
@@ -218,23 +232,6 @@ namespace Nhom11
             }
         }
 
-        //// xử lý xóa điện thoại
-        //private void XoaDienThoaiDaThem()
-        //{
-        //    // Tạo cột Button
-        //    DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
-
-        //    buttonColumn.Name = "col_ThemDienThoai";
-        //    buttonColumn.HeaderText = "";
-        //    buttonColumn.Text = "Xóa";
-        //    buttonColumn.UseColumnTextForButtonValue = true;
-
-        //    // Thêm cột Button vào DataGridView
-        //    dgv_DienThoaiDaThem.Columns.Add(buttonColumn);
-        //    // Gọi event click cho button
-        //    dgv_DanhSachDienThoaiSanCo.CellContentClick += dgv_DanhSachDienThoaiSanCo_CellContentClick;
-        //}
-
         //  cứ mỗi lần thêm điện thoại vào danh sách điện thoại đã thêm thì cập nhật tổng tiền
         private void CapNhatTongTien(DataTable currentData)
         {
@@ -247,8 +244,8 @@ namespace Nhom11
                 decimal giaBan = Convert.ToDecimal(row["Giá bán"].ToString());
                 decimal thue = Convert.ToDecimal(row["Thuế"].ToString());
                 {
-                    // Tính giá trị sau khi trừ thuế
-                    decimal giaSauThue = giaBan - (giaBan * thue / 100);
+                    // Tính giá trị sau khi cộng thuế
+                    decimal giaSauThue = giaBan + (giaBan * thue / 100);
                     tongTien += giaSauThue;
                 }
             }
@@ -406,15 +403,15 @@ namespace Nhom11
             donBan.NgayTaoDon = dt.Item1;
             donBan.GioTaoDon = dt.Item2;
 
-            //  để tự bật trigger tính riêng
             donBan.TriGia = 0;
+            
             donBan.SoLuongDT = 0;
 
             decimal tongKhachDua;
             bool isValid = decimal.TryParse(tbx_TongKhachDua.Text, out tongKhachDua);
             if (isValid)
             {
-                donBan.SoTienTra = Convert.ToDecimal(tbx_TongKhachDua.Text);
+                donBan.SoTienTra = Math.Round(tongKhachDua, 2);
             }
             else
             {
@@ -434,7 +431,6 @@ namespace Nhom11
                 return null;
             }
 
-            //????????????????????????
             donBan.MaNhanVien = BienToanCuc.MaNhanVien;
 
             if (!string.IsNullOrEmpty(cbx_ChonKhuyenMai.Text))

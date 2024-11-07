@@ -82,9 +82,9 @@
             this.label3.ForeColor = System.Drawing.SystemColors.GrayText;
             this.label3.Location = new System.Drawing.Point(29, 35);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(106, 21);
+            this.label3.Size = new System.Drawing.Size(128, 21);
             this.label3.TabIndex = 37;
-            this.label3.Text = "Tên dòng máy";
+            this.label3.Text = "Tên nhà cung cấp";
             // 
             // tbx_TenNhaCungCap
             // 

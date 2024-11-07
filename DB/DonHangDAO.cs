@@ -496,9 +496,8 @@ namespace Nhom11.DB
 
         //  LỖI LOGIC
         //  sửa đơn bán dựa vào mã đơn bán, sửa 4 thuộc tính truyền vào
-        public void SuaDonBan(string maDonBan, string newMaKhachHang, string newMaKhuyenMai, decimal soTienTra, decimal tongHoaDonSauKM)
+        public void SuaDonBan(string maDonBan, string newMaKhachHang, string newMaKhuyenMai, decimal tongHoaDonSauKM)
         {
-            MessageBox.Show(maDonBan + "\n" + newMaKhachHang + "\n" + newMaKhuyenMai + "\n" + soTienTra + "\n" + tongHoaDonSauKM);
             // Kiểm tra mã khách hàng không được null
             if (string.IsNullOrEmpty(newMaKhachHang))
             {
@@ -507,7 +506,7 @@ namespace Nhom11.DB
             }
 
             // Chuỗi truy vấn
-            string query = "EXEC Pr_SuaDonBan @Ma_don_ban, @Ma_khach_hang, @Ma_khuyen_mai, @So_tien_tra, @Tri_gia";
+            string query = "EXEC Pr_SuaDonBan @Ma_don_ban, @Ma_khach_hang, @Ma_khuyen_mai, @Tri_gia";
 
             using (SqlConnection conn = DBConnection.GetSqlConnection())
             {
@@ -527,7 +526,6 @@ namespace Nhom11.DB
                         sqlCommand.Parameters.AddWithValue("@Ma_khuyen_mai", newMaKhuyenMai);
                     }
 
-                    sqlCommand.Parameters.AddWithValue("@So_tien_tra", soTienTra);
                     sqlCommand.Parameters.AddWithValue("@Tri_gia", tongHoaDonSauKM);
 
                     try

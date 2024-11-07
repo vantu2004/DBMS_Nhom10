@@ -29,5 +29,19 @@ namespace Nhom11
 
             return result;
         }
+
+        public static string randomMa15So()
+        {
+            Random random = new Random();
+            string result = "";
+
+            for (int i = 0; i < 15; i++)
+            {
+                // Tạo một số ngẫu nhiên từ 0 đến 9
+                result += random.Next(0, 10);
+            }
+
+            return result;
+        }
     }
 }

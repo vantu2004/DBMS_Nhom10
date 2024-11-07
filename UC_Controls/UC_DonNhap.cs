@@ -38,6 +38,8 @@ namespace Nhom11
         {
             form_TaoDongMay form_TaoDongMay = new form_TaoDongMay();
 
+            string maDongMay = BienToanCuc.randomMa9So();
+
             form_TaoDongMay.ShowDialog();
         }
 
@@ -79,6 +81,11 @@ namespace Nhom11
                     MessageBox.Show("Lỗi: " + ex.Message);
                 }
             }
+        }
+
+        private void btn_TaoImei_Click(object sender, EventArgs e)
+        {
+            lbl_ImeiNgauNhien.Text = BienToanCuc.randomMa15So();
         }
     }
 }

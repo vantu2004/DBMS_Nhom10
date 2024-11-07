@@ -37,12 +37,9 @@
             this.cbx_ChonKhuyenMai = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cbx_ChonKhachHang = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.lbl_TongHoaDon = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btn_HoanThanh = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tbx_TongKhachDua = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -63,7 +60,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label12.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label12.Location = new System.Drawing.Point(705, 157);
+            this.label12.Location = new System.Drawing.Point(707, 70);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(41, 21);
             this.label12.TabIndex = 57;
@@ -74,7 +71,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label10.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label10.Location = new System.Drawing.Point(705, 243);
+            this.label10.Location = new System.Drawing.Point(707, 156);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 21);
             this.label10.TabIndex = 56;
@@ -84,7 +81,7 @@
             // 
             this.lbl_TongHoaDonSauKM.AutoSize = true;
             this.lbl_TongHoaDonSauKM.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbl_TongHoaDonSauKM.Location = new System.Drawing.Point(402, 241);
+            this.lbl_TongHoaDonSauKM.Location = new System.Drawing.Point(404, 154);
             this.lbl_TongHoaDonSauKM.Name = "lbl_TongHoaDonSauKM";
             this.lbl_TongHoaDonSauKM.Size = new System.Drawing.Size(0, 24);
             this.lbl_TongHoaDonSauKM.TabIndex = 55;
@@ -94,7 +91,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label11.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label11.Location = new System.Drawing.Point(402, 213);
+            this.label11.Location = new System.Drawing.Point(404, 126);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(217, 21);
             this.label11.TabIndex = 54;
@@ -149,22 +146,11 @@
             this.cbx_ChonKhachHang.Size = new System.Drawing.Size(229, 32);
             this.cbx_ChonKhachHang.TabIndex = 43;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label1.Location = new System.Drawing.Point(707, 70);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 21);
-            this.label1.TabIndex = 50;
-            this.label1.Text = "VND";
-            // 
             // lbl_TongHoaDon
             // 
             this.lbl_TongHoaDon.AutoSize = true;
             this.lbl_TongHoaDon.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbl_TongHoaDon.Location = new System.Drawing.Point(402, 154);
+            this.lbl_TongHoaDon.Location = new System.Drawing.Point(404, 67);
             this.lbl_TongHoaDon.Name = "lbl_TongHoaDon";
             this.lbl_TongHoaDon.Size = new System.Drawing.Size(0, 24);
             this.lbl_TongHoaDon.TabIndex = 49;
@@ -192,31 +178,12 @@
             this.btn_HoanThanh.UseVisualStyleBackColor = false;
             this.btn_HoanThanh.Click += new System.EventHandler(this.btn_HoanThanh_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label3.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label3.Location = new System.Drawing.Point(404, 39);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(118, 21);
-            this.label3.TabIndex = 48;
-            this.label3.Text = "Tổng khách đưa";
-            // 
-            // tbx_TongKhachDua
-            // 
-            this.tbx_TongKhachDua.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.tbx_TongKhachDua.Location = new System.Drawing.Point(408, 63);
-            this.tbx_TongKhachDua.Name = "tbx_TongKhachDua";
-            this.tbx_TongKhachDua.Size = new System.Drawing.Size(297, 32);
-            this.tbx_TongKhachDua.TabIndex = 47;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label2.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label2.Location = new System.Drawing.Point(402, 126);
+            this.label2.Location = new System.Drawing.Point(404, 39);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(104, 21);
             this.label2.TabIndex = 46;
@@ -236,12 +203,9 @@
             this.Controls.Add(this.cbx_ChonKhuyenMai);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.cbx_ChonKhachHang);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.lbl_TongHoaDon);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btn_HoanThanh);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.tbx_TongKhachDua);
             this.Controls.Add(this.label2);
             this.Name = "form_SuaDonHang";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -262,11 +226,8 @@
         public System.Windows.Forms.ComboBox cbx_ChonKhuyenMai;
         public System.Windows.Forms.Label label7;
         public System.Windows.Forms.ComboBox cbx_ChonKhachHang;
-        public System.Windows.Forms.Label label1;
         public System.Windows.Forms.Label label6;
         public System.Windows.Forms.Button btn_HoanThanh;
-        public System.Windows.Forms.Label label3;
-        public System.Windows.Forms.TextBox tbx_TongKhachDua;
         public System.Windows.Forms.Label label2;
         public System.Windows.Forms.Label lbl_TongHoaDonSauKM;
         public System.Windows.Forms.Label lbl_TongHoaDon;

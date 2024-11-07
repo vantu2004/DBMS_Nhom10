@@ -93,15 +93,9 @@ namespace Nhom11
                 maKhuyenMai = cbx_ChonKhuyenMai.Text;
             }    
 
-            decimal tongKhachDua = 0;
-            if (!string.IsNullOrEmpty(tbx_TongKhachDua.Text))
-            {
-                tongKhachDua = Convert.ToDecimal(tbx_TongKhachDua.Text);
-            }
-
             decimal tongHoaDonSauKM = Convert.ToDecimal(lbl_TongHoaDonSauKM.Text);
 
-            donHangDAO.SuaDonBan(MaDonHang, maKhachHang, maKhuyenMai, tongKhachDua, tongHoaDonSauKM);
+            donHangDAO.SuaDonBan(MaDonHang, maKhachHang, maKhuyenMai, tongHoaDonSauKM);
             
             this.Close();
         }
