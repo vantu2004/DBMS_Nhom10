@@ -47,14 +47,14 @@ namespace Nhom11
             if (dgv_ChiTietThanhToan.SelectedRows.Count > 0)
             {
                 var selectedRow = dgv_ChiTietThanhToan.SelectedRows[0];
-                var mdb = selectedRow.Cells["Mã Đơn Bán"].Value.ToString();
-                var stt = selectedRow.Cells["Số thứ tự"].Value.ToString();
-                form_KhachTraGop form_KhachTraGop = new form_KhachTraGop(mdb, stt);
-                form_KhachTraGop.getChiTietHoaDonGhiNo(mdb, stt);
+                var mdb = selectedRow.Cells["Ma_don_ban"].Value.ToString();
+                DateTime ngn = DateTime.Parse(selectedRow.Cells["Ngay_ghi_no"].Value.ToString());
+                DateTime ggn = DateTime.Parse(selectedRow.Cells["Gio_ghi_no"].Value.ToString());
+                form_KhachTraGop form_KhachTraGop = new form_KhachTraGop(mdb, ngn, ggn);
+                form_KhachTraGop.getChiTietHoaDonGhiNo(mdb, ngn, ggn);
                 form_KhachTraGop.ShowDialog();
             }
         }
-
         public void LoadDanhSachKhachHang()
         {
             try
