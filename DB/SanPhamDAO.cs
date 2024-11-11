@@ -20,7 +20,7 @@ namespace Nhom11
         public DataTable GetDanhSachDienThoaiCoSan()
         {
             DataTable dt = new DataTable();
-            string query = "SELECT * FROM Dgv_DanhSachDienThoaiSanCo";
+            string query = "SELECT * FROM Dgv_DanhSachDienThoai";
 
             using (SqlConnection conn = DBConnection.GetSqlConnection())
             {

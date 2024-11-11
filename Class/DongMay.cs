@@ -13,6 +13,8 @@ namespace Nhom11.Class
         private string kichThuocManHinh;
         private string dungLuongPin;
 
+        public DongMay() { }
+
         public DongMay(string maDongMay, string tenDongMay, string kichThuocManHinh, string dungLuongPin)
         {
             this.maDongMay = maDongMay;

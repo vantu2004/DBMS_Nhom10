@@ -539,11 +539,11 @@ namespace Nhom11.DB
                         // Kiểm tra số hàng đã được cập nhật
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Đã cập nhật thành công.");
+                            MessageBox.Show("Đã cập nhật thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
-                            MessageBox.Show("Không có bản ghi nào được cập nhật.");
+                            MessageBox.Show("Đã cập nhật không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                     catch (Exception ex)
@@ -571,6 +571,7 @@ namespace Nhom11.DB
                     cmd.Parameters.AddWithValue("@Tri_gia", donBan.TriGia);
                     cmd.Parameters.AddWithValue("@SL_dien_thoai", donBan.SoLuongDT);
                     cmd.Parameters.AddWithValue("@So_tien_tra", donBan.SoTienTra);
+                    MessageBox.Show(donBan.SoTienTra.ToString());
                     cmd.Parameters.AddWithValue("@Trang_thai", donBan.TrangThai);
                     cmd.Parameters.AddWithValue("@Ma_khach_hang", donBan.MaKhachHang);
 

@@ -43,7 +43,7 @@ namespace Nhom11
         public DataTable getChiTietThanhToan(string maKhachHang)
         {
             DataTable dt = new DataTable();
-            string query = $"SELECT * FROM Dgv_ChiTietThanhToan WHERE [Mã khách hàng] = '{maKhachHang}'";
+            string query = $"SELECT * FROM Dgv_ChiTietThanhToan WHERE [Ma_khach_hang] = '{maKhachHang}'";
 
             using (SqlConnection conn = DBConnection.GetSqlConnection())
             {
@@ -113,14 +113,19 @@ namespace Nhom11
             }
         }
 
-        public DataTable getChiTietHoaDonGhiNo(string maDonBan, string soThuTu)
+        public DataTable getChiTietHoaDonGhiNo(string maDonBan, DateTime Ngayghino, DateTime Gioghino)
         {
             DataTable dt = new DataTable();
-            string query = $"SELECT * FROM Dgv_ChiTietThanhToan WHERE [Mã đơn bán] = '{maDonBan}' AND [Số thứ tự]='{soThuTu}'";
+
+            // Sử dụng hàm CONVERT để tách ngày và giờ từ kiểu DateTime
+            string query = @" SELECT * FROM Dgv_ChiTietThanhToan WHERE [Ma_don_ban] = @MaDonBan AND CONVERT(date, [Ngay_ghi_no]) = @NgayGhiNo AND CONVERT(time, [Gio_ghi_no]) = @GioGhiNo";
 
             using (SqlConnection conn = DBConnection.GetSqlConnection())
+            using (SqlCommand sqlCommand = new SqlCommand(query, conn))
             {
-                sqlCommand = new SqlCommand(query, conn);
+                sqlCommand.Parameters.AddWithValue("@MaDonBan", maDonBan);
+                sqlCommand.Parameters.AddWithValue("@NgayGhiNo", Ngayghino.Date); // Lấy phần ngày
+                sqlCommand.Parameters.AddWithValue("@GioGhiNo", Gioghino.TimeOfDay); // Lấy phần giờ
 
                 try
                 {
@@ -130,7 +135,7 @@ namespace Nhom11
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Không thể lấy danh sách chi tiết hóa đơn ghi nợ : " + ex.Message);
+                    throw new Exception("Không thể lấy danh sách chi tiết hóa đơn ghi nợ: " + ex.Message);
                 }
             }
 
@@ -187,6 +192,40 @@ namespace Nhom11
             }
 
             return isDuplicate;
+        }
+
+        //  Anh Tú
+        public bool UpdateSoTienConLai(string maDonBan, decimal soTienTraThem, DateTime ngayGhiNo, DateTime gioGhiNo)
+        {
+            using (SqlConnection conn = DBConnection.GetSqlConnection())
+            {
+                SqlCommand sqlCommand = new SqlCommand("sp_UpdateSoTienConLai", conn);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                sqlCommand.Parameters.AddWithValue("@MaDonBan", maDonBan);
+                sqlCommand.Parameters.AddWithValue("@SoTienTraThem", soTienTraThem);
+                sqlCommand.Parameters.AddWithValue("@NgayGhiNo", ngayGhiNo);
+                sqlCommand.Parameters.AddWithValue("@GioGhiNo", gioGhiNo);
+
+                SqlParameter successParam = new SqlParameter("@Success", SqlDbType.Int)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                sqlCommand.Parameters.Add(successParam);
+
+                try
+                {
+                    conn.Open();
+                    sqlCommand.ExecuteNonQuery();
+
+                    return (int)successParam.Value == 1;
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show("Lỗi SQL: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
         }
     }
 }

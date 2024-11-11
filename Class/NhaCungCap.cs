@@ -13,6 +13,8 @@ namespace Nhom11.Class
         private string diaChi;
         private string sDT;
 
+        public NhaCungCap() { }
+
         public NhaCungCap(string maNhaCungCap, string tenChaCungCap, string diaChi, string sDT)
         {
             this.maNhaCungCap = maNhaCungCap;

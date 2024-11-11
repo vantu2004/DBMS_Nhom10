@@ -42,6 +42,18 @@
             this.tab_TaoDonNhap = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.dgv_DanhSachDienThoai = new System.Windows.Forms.DataGridView();
+            this.maDongMay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenDongMay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.manHinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imei = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mauSac = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.trangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.thue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.giaBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.giaNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hinhAnh = new System.Windows.Forms.DataGridViewImageColumn();
+            this.xoa = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_HoanThanh = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -213,6 +225,7 @@
             this.btn_TìmDonNhap.TabIndex = 4;
             this.btn_TìmDonNhap.Text = "Tìm kiếm";
             this.btn_TìmDonNhap.UseVisualStyleBackColor = false;
+            this.btn_TìmDonNhap.Click += new System.EventHandler(this.btn_TìmDonNhap_Click);
             // 
             // tab_TaoDonNhap
             // 
@@ -244,13 +257,136 @@
             this.dgv_DanhSachDienThoai.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgv_DanhSachDienThoai.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_DanhSachDienThoai.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_DanhSachDienThoai.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.maDongMay,
+            this.tenDongMay,
+            this.manHinh,
+            this.pin,
+            this.imei,
+            this.mauSac,
+            this.trangThai,
+            this.thue,
+            this.giaBan,
+            this.giaNhap,
+            this.hinhAnh,
+            this.xoa});
             this.dgv_DanhSachDienThoai.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_DanhSachDienThoai.Location = new System.Drawing.Point(3, 24);
             this.dgv_DanhSachDienThoai.Name = "dgv_DanhSachDienThoai";
+            this.dgv_DanhSachDienThoai.ReadOnly = true;
             this.dgv_DanhSachDienThoai.RowHeadersWidth = 51;
             this.dgv_DanhSachDienThoai.RowTemplate.Height = 24;
             this.dgv_DanhSachDienThoai.Size = new System.Drawing.Size(1235, 985);
             this.dgv_DanhSachDienThoai.TabIndex = 27;
+            // 
+            // maDongMay
+            // 
+            this.maDongMay.HeaderText = "Mã dòng máy";
+            this.maDongMay.MinimumWidth = 6;
+            this.maDongMay.Name = "maDongMay";
+            this.maDongMay.ReadOnly = true;
+            this.maDongMay.Width = 125;
+            // 
+            // tenDongMay
+            // 
+            this.tenDongMay.HeaderText = "Tên dòng máy";
+            this.tenDongMay.MinimumWidth = 6;
+            this.tenDongMay.Name = "tenDongMay";
+            this.tenDongMay.ReadOnly = true;
+            this.tenDongMay.Width = 125;
+            // 
+            // manHinh
+            // 
+            this.manHinh.HeaderText = "Kích thước màn hình";
+            this.manHinh.MinimumWidth = 6;
+            this.manHinh.Name = "manHinh";
+            this.manHinh.ReadOnly = true;
+            this.manHinh.Width = 125;
+            // 
+            // pin
+            // 
+            this.pin.HeaderText = "Dung lượng pin";
+            this.pin.MinimumWidth = 6;
+            this.pin.Name = "pin";
+            this.pin.ReadOnly = true;
+            this.pin.Width = 125;
+            // 
+            // imei
+            // 
+            this.imei.HeaderText = "Mã Imei";
+            this.imei.MinimumWidth = 6;
+            this.imei.Name = "imei";
+            this.imei.ReadOnly = true;
+            this.imei.Width = 125;
+            // 
+            // mauSac
+            // 
+            this.mauSac.HeaderText = "Màu sắc";
+            this.mauSac.MinimumWidth = 6;
+            this.mauSac.Name = "mauSac";
+            this.mauSac.ReadOnly = true;
+            this.mauSac.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.mauSac.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.mauSac.Width = 125;
+            // 
+            // trangThai
+            // 
+            this.trangThai.HeaderText = "Trạng thái";
+            this.trangThai.MinimumWidth = 6;
+            this.trangThai.Name = "trangThai";
+            this.trangThai.ReadOnly = true;
+            this.trangThai.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.trangThai.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.trangThai.Width = 125;
+            // 
+            // thue
+            // 
+            this.thue.HeaderText = "Thuế";
+            this.thue.MinimumWidth = 6;
+            this.thue.Name = "thue";
+            this.thue.ReadOnly = true;
+            this.thue.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.thue.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.thue.Width = 125;
+            // 
+            // giaBan
+            // 
+            this.giaBan.HeaderText = "Giá bán";
+            this.giaBan.MinimumWidth = 6;
+            this.giaBan.Name = "giaBan";
+            this.giaBan.ReadOnly = true;
+            this.giaBan.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.giaBan.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.giaBan.Width = 125;
+            // 
+            // giaNhap
+            // 
+            this.giaNhap.HeaderText = "Giá nhập";
+            this.giaNhap.MinimumWidth = 6;
+            this.giaNhap.Name = "giaNhap";
+            this.giaNhap.ReadOnly = true;
+            this.giaNhap.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.giaNhap.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.giaNhap.Width = 125;
+            // 
+            // hinhAnh
+            // 
+            this.hinhAnh.HeaderText = "Hình ảnh";
+            this.hinhAnh.MinimumWidth = 6;
+            this.hinhAnh.Name = "hinhAnh";
+            this.hinhAnh.ReadOnly = true;
+            this.hinhAnh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.hinhAnh.Width = 125;
+            // 
+            // xoa
+            // 
+            this.xoa.HeaderText = "";
+            this.xoa.MinimumWidth = 6;
+            this.xoa.Name = "xoa";
+            this.xoa.ReadOnly = true;
+            this.xoa.Text = "Xóa";
+            this.xoa.UseColumnTextForButtonValue = true;
+            this.xoa.Width = 125;
             // 
             // groupBox1
             // 
@@ -292,6 +428,7 @@
             this.btn_HoanThanh.TabIndex = 69;
             this.btn_HoanThanh.Text = "Hoàn thành";
             this.btn_HoanThanh.UseVisualStyleBackColor = false;
+            this.btn_HoanThanh.Click += new System.EventHandler(this.btn_HoanThanh_Click);
             // 
             // label8
             // 
@@ -469,6 +606,7 @@
             this.btn_ThemSanPham.TabIndex = 56;
             this.btn_ThemSanPham.Text = "Thêm sản phẩm";
             this.btn_ThemSanPham.UseVisualStyleBackColor = false;
+            this.btn_ThemSanPham.Click += new System.EventHandler(this.btn_ThemSanPham_Click);
             // 
             // UC_DonNhap
             // 
@@ -528,5 +666,17 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maDongMay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tenDongMay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn manHinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn imei;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mauSac;
+        private System.Windows.Forms.DataGridViewTextBoxColumn trangThai;
+        private System.Windows.Forms.DataGridViewTextBoxColumn thue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn giaBan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn giaNhap;
+        private System.Windows.Forms.DataGridViewImageColumn hinhAnh;
+        private System.Windows.Forms.DataGridViewButtonColumn xoa;
     }
 }

@@ -15,14 +15,16 @@ namespace Nhom11
     public partial class form_KhachTraGop : Form
     {
         private string selectedMaDonBan;
-        private string selectedSoThuTu;
+        private DateTime selectedNgayGhiNo;
+        private DateTime selectedGioGhiNo;
         KhachHangDAO khachHangDAO = new KhachHangDAO();
-        public form_KhachTraGop(string maDonBan, string soThuTu)
+        public form_KhachTraGop(string maDonBan, DateTime ngayGhiNo, DateTime gioGhiNo)
         {
             InitializeComponent();
             selectedMaDonBan = maDonBan;
-            selectedSoThuTu = soThuTu;
-            getChiTietHoaDonGhiNo(selectedMaDonBan, selectedSoThuTu);
+            selectedNgayGhiNo = ngayGhiNo;
+            selectedGioGhiNo = gioGhiNo;
+            getChiTietHoaDonGhiNo(selectedMaDonBan, selectedNgayGhiNo, selectedGioGhiNo);
         }
 
         private void form_KhachTraGop_Load(object sender, EventArgs e)
@@ -30,9 +32,9 @@ namespace Nhom11
 
         }
 
-        public void getChiTietHoaDonGhiNo(string maDonBan, string soThuTu)
+        public void getChiTietHoaDonGhiNo(string maDonBan, DateTime Ngayghino, DateTime Gioghino)
         {
-            DataTable dt = khachHangDAO.getChiTietHoaDonGhiNo(maDonBan, soThuTu);
+            DataTable dt = khachHangDAO.getChiTietHoaDonGhiNo(maDonBan, Ngayghino, Gioghino);
 
             // Kiểm tra xem DataTable có dữ liệu hay không
             if (dt != null && dt.Rows.Count > 0)
@@ -43,11 +45,9 @@ namespace Nhom11
 
                 foreach (DataRow row in dt.Rows)
                 {
-
-                    tongKhachDaTra = row.Field<decimal>("Số tiền đã trả");
-                    tongHoaDon = row.Field<decimal>("Tổng giá trị");
-                    tongKhachConNo = row.Field<decimal>("Số tiền còn lại chưa thanh toán");
-
+                    tongKhachDaTra = row.IsNull("So_tien_tra") ? 0 : row.Field<decimal>("So_tien_tra");
+                    tongHoaDon = row.IsNull("Tri_gia") ? 0 : row.Field<decimal>("Tri_gia");
+                    tongKhachConNo = row.IsNull("Chua_thanh_toan") ? 0 : row.Field<decimal>("Chua_thanh_toan");
                 }
 
                 // Cập nhật label với giá trị tính được
@@ -59,21 +59,35 @@ namespace Nhom11
             {
                 lbl_TongKhachDaTra.Text = "0";
                 lbl_TongHoaDon.Text = "0";
+                lbl_TongKhachConNo.Text = "0";
             }
         }
+
+
 
         private void btn_HoanThanh_Click_1(object sender, EventArgs e)
         {
             UC_KhachHang uC = new UC_KhachHang();
             try
             {
-                string maDonBan = selectedMaDonBan; // Replace with the actual selected value
+                string maDonBan = selectedMaDonBan;
+                DateTime ngayGhiNo = selectedNgayGhiNo;
+                DateTime gioGhiNo = selectedGioGhiNo;
                 decimal soTienTraThem = Convert.ToDecimal(tbx_KhachTraThem.Text);
 
-                // Call the update method
-                if (khachHangDAO.UpdateSoTienConLai(maDonBan, soTienTraThem))
+                if (string.IsNullOrEmpty(maDonBan))
+                {
+                    MessageBox.Show("Mã đơn bán không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (khachHangDAO.UpdateSoTienConLai(maDonBan, soTienTraThem, ngayGhiNo, gioGhiNo))
                 {
                     MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Cập nhật thất bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (FormatException)
