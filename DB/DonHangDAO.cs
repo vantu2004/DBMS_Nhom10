@@ -571,7 +571,6 @@ namespace Nhom11.DB
                     cmd.Parameters.AddWithValue("@Tri_gia", donBan.TriGia);
                     cmd.Parameters.AddWithValue("@SL_dien_thoai", donBan.SoLuongDT);
                     cmd.Parameters.AddWithValue("@So_tien_tra", donBan.SoTienTra);
-                    MessageBox.Show(donBan.SoTienTra.ToString());
                     cmd.Parameters.AddWithValue("@Trang_thai", donBan.TrangThai);
                     cmd.Parameters.AddWithValue("@Ma_khach_hang", donBan.MaKhachHang);
 

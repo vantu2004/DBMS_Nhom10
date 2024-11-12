@@ -35,6 +35,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgv_ChiTietDonNhap = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbx_MaNCC = new System.Windows.Forms.ComboBox();
             this.btn_XoaDonNhap = new System.Windows.Forms.Button();
             this.btn_SuaDonNhap = new System.Windows.Forms.Button();
             this.tbx_TimDonNhap = new System.Windows.Forms.TextBox();
@@ -166,6 +167,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cbx_MaNCC);
             this.groupBox2.Controls.Add(this.btn_XoaDonNhap);
             this.groupBox2.Controls.Add(this.btn_SuaDonNhap);
             this.groupBox2.Controls.Add(this.tbx_TimDonNhap);
@@ -180,24 +182,38 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thao tác";
             // 
+            // cbx_MaNCC
+            // 
+            this.cbx_MaNCC.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbx_MaNCC.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbx_MaNCC.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cbx_MaNCC.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.cbx_MaNCC.FormattingEnabled = true;
+            this.cbx_MaNCC.IntegralHeight = false;
+            this.cbx_MaNCC.Location = new System.Drawing.Point(48, 33);
+            this.cbx_MaNCC.Name = "cbx_MaNCC";
+            this.cbx_MaNCC.Size = new System.Drawing.Size(229, 32);
+            this.cbx_MaNCC.TabIndex = 23;
+            // 
             // btn_XoaDonNhap
             // 
             this.btn_XoaDonNhap.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btn_XoaDonNhap.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btn_XoaDonNhap.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btn_XoaDonNhap.Location = new System.Drawing.Point(548, 33);
+            this.btn_XoaDonNhap.Location = new System.Drawing.Point(885, 33);
             this.btn_XoaDonNhap.Name = "btn_XoaDonNhap";
             this.btn_XoaDonNhap.Size = new System.Drawing.Size(110, 32);
             this.btn_XoaDonNhap.TabIndex = 6;
             this.btn_XoaDonNhap.Text = "Xóa";
             this.btn_XoaDonNhap.UseVisualStyleBackColor = false;
+            this.btn_XoaDonNhap.Click += new System.EventHandler(this.btn_XoaDonNhap_Click);
             // 
             // btn_SuaDonNhap
             // 
             this.btn_SuaDonNhap.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btn_SuaDonNhap.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btn_SuaDonNhap.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btn_SuaDonNhap.Location = new System.Drawing.Point(432, 33);
+            this.btn_SuaDonNhap.Location = new System.Drawing.Point(769, 33);
             this.btn_SuaDonNhap.Name = "btn_SuaDonNhap";
             this.btn_SuaDonNhap.Size = new System.Drawing.Size(110, 32);
             this.btn_SuaDonNhap.TabIndex = 5;
@@ -208,7 +224,7 @@
             // tbx_TimDonNhap
             // 
             this.tbx_TimDonNhap.ForeColor = System.Drawing.Color.DarkGray;
-            this.tbx_TimDonNhap.Location = new System.Drawing.Point(47, 37);
+            this.tbx_TimDonNhap.Location = new System.Drawing.Point(500, 35);
             this.tbx_TimDonNhap.Name = "tbx_TimDonNhap";
             this.tbx_TimDonNhap.Size = new System.Drawing.Size(263, 28);
             this.tbx_TimDonNhap.TabIndex = 3;
@@ -219,7 +235,7 @@
             this.btn_TìmDonNhap.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btn_TìmDonNhap.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btn_TìmDonNhap.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btn_TìmDonNhap.Location = new System.Drawing.Point(316, 33);
+            this.btn_TìmDonNhap.Location = new System.Drawing.Point(283, 33);
             this.btn_TìmDonNhap.Name = "btn_TìmDonNhap";
             this.btn_TìmDonNhap.Size = new System.Drawing.Size(110, 32);
             this.btn_TìmDonNhap.TabIndex = 4;
@@ -637,7 +653,6 @@
         public System.Windows.Forms.TabControl tcl_SanPham;
         public System.Windows.Forms.TabPage tab_DanhSachDonNhap;
         public System.Windows.Forms.Button btn_TìmDonNhap;
-        public System.Windows.Forms.TextBox tbx_TimDonNhap;
         public System.Windows.Forms.DataGridView dgv_DanhSachDonNhap;
         public System.Windows.Forms.TabPage tab_TaoDonNhap;
         public System.Windows.Forms.Button btn_XoaDonNhap;
@@ -678,5 +693,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn giaNhap;
         private System.Windows.Forms.DataGridViewImageColumn hinhAnh;
         private System.Windows.Forms.DataGridViewButtonColumn xoa;
+        public System.Windows.Forms.TextBox tbx_TimDonNhap;
+        public System.Windows.Forms.ComboBox cbx_MaNCC;
     }
 }

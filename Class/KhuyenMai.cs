@@ -10,27 +10,19 @@ namespace Nhom11.Class
     public class KhuyenMai
     {
         private string maKhuyenMai;
-        private string chietKhau;
-        private string ngayApDung;
+        private decimal chietKhau;
+        private DateTime ngayApDung;
         private string tenChuongTrinh;
-        private string soLuongApDung;
-        private string ngayKetThuc;
+        private int soLuongApDung;
+        private DateTime ngayKetThuc;
 
-        public KhuyenMai(string maKhuyenMai, string chietKhau, string ngayApDung, string tenChuongTrinh, string soLuongApDung, string ngayKetThuc)
-        {
-            this.maKhuyenMai = maKhuyenMai;
-            this.chietKhau = chietKhau;
-            this.ngayApDung = ngayApDung;
-            this.tenChuongTrinh = tenChuongTrinh;
-            this.soLuongApDung = soLuongApDung;
-            this.ngayKetThuc = ngayKetThuc;
-        }
+        public KhuyenMai () { }
 
         public string MaKhuyenMai { get => maKhuyenMai; set => maKhuyenMai = value; }
-        public string ChietKhau { get => chietKhau; set => chietKhau = value; }
-        public string NgayApDung { get => ngayApDung; set => ngayApDung = value; }
+        public decimal ChietKhau { get => chietKhau; set => chietKhau = value; }
+        public DateTime NgayApDung { get => ngayApDung; set => ngayApDung = value; }
         public string TenChuongTrinh { get => tenChuongTrinh; set => tenChuongTrinh = value; }
-        public string SoLuongApDung { get => soLuongApDung; set => soLuongApDung = value; }
-        public string NgayKetThuc { get => ngayKetThuc; set => ngayKetThuc = value; }
+        public int SoLuongApDung { get => soLuongApDung; set => soLuongApDung = value; }
+        public DateTime NgayKetThuc { get => ngayKetThuc; set => ngayKetThuc = value; }
     }
 }
