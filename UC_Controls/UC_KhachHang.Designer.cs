@@ -77,7 +77,7 @@
             this.dgv_DanhSachKhachHang.Name = "dgv_DanhSachKhachHang";
             this.dgv_DanhSachKhachHang.RowHeadersWidth = 51;
             this.dgv_DanhSachKhachHang.RowTemplate.Height = 24;
-            this.dgv_DanhSachKhachHang.Size = new System.Drawing.Size(960, 932);
+            this.dgv_DanhSachKhachHang.Size = new System.Drawing.Size(752, 932);
             this.dgv_DanhSachKhachHang.TabIndex = 5;
             this.dgv_DanhSachKhachHang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DanhSachKhachHang_CellClick);
             // 
@@ -104,7 +104,7 @@
             this.dgv_ChiTietThanhToan.Name = "dgv_ChiTietThanhToan";
             this.dgv_ChiTietThanhToan.RowHeadersWidth = 51;
             this.dgv_ChiTietThanhToan.RowTemplate.Height = 24;
-            this.dgv_ChiTietThanhToan.Size = new System.Drawing.Size(702, 932);
+            this.dgv_ChiTietThanhToan.Size = new System.Drawing.Size(910, 932);
             this.dgv_ChiTietThanhToan.TabIndex = 47;
             this.dgv_ChiTietThanhToan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_ChiTietThanhToan_CellClick);
             // 
@@ -145,7 +145,7 @@
             this.groupBox2.ForeColor = System.Drawing.SystemColors.GrayText;
             this.groupBox2.Location = new System.Drawing.Point(0, 96);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(966, 959);
+            this.groupBox2.Size = new System.Drawing.Size(758, 959);
             this.groupBox2.TabIndex = 51;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dach sách khách hàng";
@@ -156,9 +156,9 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.groupBox3.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.groupBox3.Location = new System.Drawing.Point(966, 96);
+            this.groupBox3.Location = new System.Drawing.Point(758, 96);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(708, 959);
+            this.groupBox3.Size = new System.Drawing.Size(916, 959);
             this.groupBox3.TabIndex = 52;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Chi tiết thanh toán";

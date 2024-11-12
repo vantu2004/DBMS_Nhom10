@@ -34,7 +34,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tbx_TimSanPham = new System.Windows.Forms.TextBox();
             this.btn_TìmSanPham = new System.Windows.Forms.Button();
-            this.btn_SapXep = new System.Windows.Forms.Button();
             this.btn_XoaSanPham = new System.Windows.Forms.Button();
             this.btn_SuaSanPham = new System.Windows.Forms.Button();
             this.tbx_NhapImei = new System.Windows.Forms.TextBox();
@@ -116,7 +115,6 @@
             // 
             this.groupBox1.Controls.Add(this.tbx_TimSanPham);
             this.groupBox1.Controls.Add(this.btn_TìmSanPham);
-            this.groupBox1.Controls.Add(this.btn_SapXep);
             this.groupBox1.Controls.Add(this.btn_XoaSanPham);
             this.groupBox1.Controls.Add(this.btn_SuaSanPham);
             this.groupBox1.Controls.Add(this.tbx_NhapImei);
@@ -150,18 +148,6 @@
             this.btn_TìmSanPham.TabIndex = 4;
             this.btn_TìmSanPham.Text = "Tìm kiếm";
             this.btn_TìmSanPham.UseVisualStyleBackColor = false;
-            // 
-            // btn_SapXep
-            // 
-            this.btn_SapXep.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btn_SapXep.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btn_SapXep.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btn_SapXep.Location = new System.Drawing.Point(441, 38);
-            this.btn_SapXep.Name = "btn_SapXep";
-            this.btn_SapXep.Size = new System.Drawing.Size(110, 32);
-            this.btn_SapXep.TabIndex = 15;
-            this.btn_SapXep.Text = "Sắp xếp";
-            this.btn_SapXep.UseVisualStyleBackColor = false;
             // 
             // btn_XoaSanPham
             // 
@@ -518,7 +504,6 @@
         public System.Windows.Forms.ComboBox cbx_ChonDongMay;
         public System.Windows.Forms.Label label4;
         public System.Windows.Forms.Button btn_HoanThanh;
-        public System.Windows.Forms.Button btn_SapXep;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox4;

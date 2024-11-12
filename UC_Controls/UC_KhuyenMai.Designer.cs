@@ -50,8 +50,6 @@
             this.tbx_ChietKhau = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.tbx_TenChuongTrinh = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.tbx_MaKhuyenMai = new System.Windows.Forms.TextBox();
             this.tcl_SanPham.SuspendLayout();
             this.tab_DanhSachKhuyenMai.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -147,6 +145,7 @@
             this.btn_TìmMaKhuyenMai.TabIndex = 4;
             this.btn_TìmMaKhuyenMai.Text = "Tìm kiếm";
             this.btn_TìmMaKhuyenMai.UseVisualStyleBackColor = false;
+            this.btn_TìmMaKhuyenMai.Click += new System.EventHandler(this.btn_TìmMaKhuyenMai_Click);
             // 
             // btn_SuaMaKhuyenMai
             // 
@@ -187,8 +186,6 @@
             this.tab_TaoKhuyenMai.Controls.Add(this.tbx_ChietKhau);
             this.tab_TaoKhuyenMai.Controls.Add(this.label9);
             this.tab_TaoKhuyenMai.Controls.Add(this.tbx_TenChuongTrinh);
-            this.tab_TaoKhuyenMai.Controls.Add(this.label10);
-            this.tab_TaoKhuyenMai.Controls.Add(this.tbx_MaKhuyenMai);
             this.tab_TaoKhuyenMai.Location = new System.Drawing.Point(4, 33);
             this.tab_TaoKhuyenMai.Name = "tab_TaoKhuyenMai";
             this.tab_TaoKhuyenMai.Padding = new System.Windows.Forms.Padding(3);
@@ -208,6 +205,7 @@
             this.button1.TabIndex = 39;
             this.button1.Text = "Hoàn thành";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dtp_NgayKetThuc
             // 
@@ -252,7 +250,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label5.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label5.Location = new System.Drawing.Point(888, 168);
+            this.label5.Location = new System.Drawing.Point(888, 72);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(109, 21);
             this.label5.TabIndex = 34;
@@ -282,7 +280,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label6.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label6.Location = new System.Drawing.Point(597, 138);
+            this.label6.Location = new System.Drawing.Point(597, 42);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(84, 21);
             this.label6.TabIndex = 31;
@@ -291,7 +289,7 @@
             // tbx_ChietKhau
             // 
             this.tbx_ChietKhau.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.tbx_ChietKhau.Location = new System.Drawing.Point(597, 162);
+            this.tbx_ChietKhau.Location = new System.Drawing.Point(597, 66);
             this.tbx_ChietKhau.Name = "tbx_ChietKhau";
             this.tbx_ChietKhau.Size = new System.Drawing.Size(285, 32);
             this.tbx_ChietKhau.TabIndex = 30;
@@ -314,25 +312,6 @@
             this.tbx_TenChuongTrinh.Name = "tbx_TenChuongTrinh";
             this.tbx_TenChuongTrinh.Size = new System.Drawing.Size(400, 32);
             this.tbx_TenChuongTrinh.TabIndex = 28;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label10.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label10.Location = new System.Drawing.Point(597, 42);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(118, 21);
-            this.label10.TabIndex = 27;
-            this.label10.Text = "Mã khuyến mãi";
-            // 
-            // tbx_MaKhuyenMai
-            // 
-            this.tbx_MaKhuyenMai.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.tbx_MaKhuyenMai.Location = new System.Drawing.Point(597, 66);
-            this.tbx_MaKhuyenMai.Name = "tbx_MaKhuyenMai";
-            this.tbx_MaKhuyenMai.Size = new System.Drawing.Size(400, 32);
-            this.tbx_MaKhuyenMai.TabIndex = 26;
             // 
             // UC_KhuyenMai
             // 
@@ -371,8 +350,6 @@
         public System.Windows.Forms.TextBox tbx_ChietKhau;
         public System.Windows.Forms.Label label9;
         public System.Windows.Forms.TextBox tbx_TenChuongTrinh;
-        public System.Windows.Forms.Label label10;
-        public System.Windows.Forms.TextBox tbx_MaKhuyenMai;
         public System.Windows.Forms.Button btn_SuaMaKhuyenMai;
         public System.Windows.Forms.TabPage tab_TaoKhuyenMai;
         public System.Windows.Forms.DateTimePicker dtp_NgayKetThuc;

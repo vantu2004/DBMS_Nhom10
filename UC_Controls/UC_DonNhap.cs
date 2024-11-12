@@ -17,6 +17,9 @@ namespace Nhom11
     public partial class UC_DonNhap : UserControl
     {
         DonNhapDAO donNhapDAO = new DonNhapDAO();
+        int soLuongDienThoaiDonNhap = 0;
+        decimal triGiaDonNhap = 0;
+
         public UC_DonNhap()
         {
             InitializeComponent();
@@ -31,7 +34,14 @@ namespace Nhom11
         {
             form_SuaDonNhap form_SuaDonNhap = new form_SuaDonNhap();
 
-            form_SuaDonNhap.ShowDialog();
+            form_SuaMaKhuyenMai form_SuaMaKhuyenMai = new form_SuaMaKhuyenMai();
+
+            if (!string.IsNullOrEmpty(tbx_TimDonNhap.Text) && donNhapDAO.KiemTraMaDonNhap(tbx_TimDonNhap.Text))
+            {
+                form_SuaDonNhap.MaDonNhap = tbx_TimDonNhap.Text;
+                form_SuaDonNhap.LoadThongTinMaDonNhap();
+                form_SuaDonNhap.ShowDialog();
+            }
         }
 
         private void btn_TaoNhaCungCap_Click_1(object sender, EventArgs e)
@@ -112,10 +122,16 @@ namespace Nhom11
         {
             List<string> maNhaCungCap = donNhapDAO.LoadMaNhaCungCap();
 
-            cbx_ChonDongMay.Items.Clear();
+            cbx_ChonNhaCungCap.Items.Clear();
             foreach (string item in maNhaCungCap)
             {
                 cbx_ChonNhaCungCap.Items.Add(item);
+            }
+
+            cbx_MaNCC.Items.Clear();
+            foreach (string item in maNhaCungCap)
+            {
+                cbx_MaNCC.Items.Add(item);
             }
         }
 
@@ -188,6 +204,10 @@ namespace Nhom11
 
                 MessageBox.Show("Tạo đơn nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                // set lại 2 biến về 0 để tạo đơn nhập liên tục
+                soLuongDienThoaiDonNhap = 0;
+                triGiaDonNhap = 0;
+
             }
             else
             {
@@ -225,12 +245,18 @@ namespace Nhom11
                     dataRow["Hinh_anh"] = DBNull.Value;
                     dataRow["Mau_sac"] = DBNull.Value;
                     dataRow["Trang_thai"] = DBNull.Value;
-                    dataRow["Gia_nhap"] = row.Cells["giaNhap"].Value != null ? Convert.ToDecimal(row.Cells["giaNhap"].Value) : (object)DBNull.Value;
+
+                    decimal giaNhap = Convert.ToDecimal(row.Cells["giaNhap"].Value);
+                    dataRow["Gia_nhap"] = giaNhap;
+
                     dataRow["Gia_ban"] = row.Cells["giaBan"].Value != null ? Convert.ToDecimal(row.Cells["giaBan"].Value) : (object)DBNull.Value;
                     dataRow["Thue"] = DBNull.Value;
                     dataRow["Ma_dong_may"] = row.Cells["maDongMay"].Value;
 
                     dt.Rows.Add(dataRow);
+
+                    soLuongDienThoaiDonNhap++;
+                    triGiaDonNhap += giaNhap;
                 }
             }
 
@@ -244,6 +270,8 @@ namespace Nhom11
             donNhap.MaDonNhap = BienToanCuc.randomMa9So();
             donNhap.MaNCC = cbx_ChonNhaCungCap.Text;
             donNhap.MaNhanVien = BienToanCuc.MaNhanVien;
+            donNhap.TriGia = triGiaDonNhap;
+            donNhap.SoLuongDT = soLuongDienThoaiDonNhap;
 
             return donNhap;
         }
@@ -280,10 +308,37 @@ namespace Nhom11
 
         private void btn_TìmDonNhap_Click(object sender, EventArgs e)
         {
+            string maNhaCungCap = cbx_MaNCC.Text;
+
+            try
+            {
+                // Lấy dữ liệu từ view
+                DataTable dt = donNhapDAO.GetDanhSachDonNhapMaNCC(maNhaCungCap);
+                // Gán dữ liệu vào DataGridView
+                dgv_DanhSachDonNhap.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                // Hiển thị thông báo lỗi nếu có
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
+        }
+
+        private void btn_XoaDonNhap_Click(object sender, EventArgs e)
+        {
             string maDonNhap = tbx_TimDonNhap.Text;
 
-            DataTable dt = donNhapDAO.TimDonNhap(maDonNhap);
-            dgv_DanhSachDonNhap.DataSource = dt;
+            if (!string.IsNullOrEmpty(maDonNhap) && donNhapDAO.KiemTraMaDonNhap(maDonNhap))
+            {
+                if (donNhapDAO.XoaDonNhap(maDonNhap))
+                {
+                    MessageBox.Show("Xóa đơn nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Không thể xóa đơn nhập!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
         }
     }
 }

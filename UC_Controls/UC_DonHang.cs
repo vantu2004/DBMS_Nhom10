@@ -412,7 +412,6 @@ namespace Nhom11
             if (isValid)
             {
                 donBan.SoTienTra = Math.Round(tongKhachDua, 2);
-                MessageBox.Show(tongKhachDua.ToString());
             }
             else
             {

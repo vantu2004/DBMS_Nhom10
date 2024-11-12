@@ -272,6 +272,8 @@ namespace Nhom11
                         cmd.Parameters.AddWithValue("@Ma_don_nhap", donNhap.MaDonNhap);
                         cmd.Parameters.AddWithValue("@Ma_NCC", donNhap.MaNCC);
                         cmd.Parameters.AddWithValue("@Ma_nhan_vien", donNhap.MaNhanVien ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@SoLuongDienThoai", donNhap.SoLuongDT);
+                        cmd.Parameters.AddWithValue("@TriGia", donNhap.TriGia);
 
                         cmd.ExecuteNonQuery();
                     }
@@ -342,6 +344,133 @@ namespace Nhom11
             }
 
             return dt;
+        }
+
+        //  lấy danh sách đơn nhập bằng mã dòng máy
+        public DataTable GetDanhSachDonNhapMaNCC(string sdt)
+        {
+            DataTable dt = new DataTable();
+            string query = $"SELECT * FROM dbo.Fn_TimKiemTheoMaNCC('{sdt}');";
+
+            using (SqlConnection conn = DBConnection.GetSqlConnection())
+            {
+                sqlCommand = new SqlCommand(query, conn);
+                try
+                {
+                    conn.Open();
+                    SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand);
+                    adapter.Fill(dt);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Không thể lấy danh sách đơn nhập: " + ex.Message);
+                }
+            }
+
+            return dt;
+        }
+
+        public bool KiemTraMaDonNhap(string maDonNhap)
+        {
+            try
+            {
+                using (SqlConnection connection = DBConnection.GetSqlConnection())
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("SELECT dbo.Fn_KiemTraMaDonNhap(@MaDonNhap)", connection))
+                    {
+                        command.Parameters.Add(new SqlParameter("@MaDonNhap", maDonNhap));
+
+                        // Execute the command and get the result
+                        object result = command.ExecuteScalar();
+
+                        // Kiểm tra nếu result không null và chuyển đổi thành kiểu int để so sánh
+                        return result != DBNull.Value && Convert.ToInt32(result) == 1;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi " + ex.Message);
+                return false;
+            }
+        }
+
+        public DataTable LayThongTinDonNhap(string maDonNhap)
+        {
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                using (SqlConnection connection = DBConnection.GetSqlConnection())
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("SELECT * FROM Fn_LayThongTinDonNhap(@MaDonNhap)", connection))
+                    {
+                        command.Parameters.Add(new SqlParameter("@MaDonNhap", maDonNhap));
+
+                        // Sử dụng SqlDataAdapter để điền dữ liệu vào DataTable
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            adapter.Fill(dataTable);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
+
+            return dataTable;
+        }
+
+        public void SuaDonNhap(string maDonNhap, string maNCC)
+        {
+            using (SqlConnection connection = DBConnection.GetSqlConnection())
+            {
+                using (SqlCommand command = new SqlCommand("Pr_SuaDonNhap", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@MaDonNhap", maDonNhap);
+                    command.Parameters.AddWithValue("@MaNCC", maNCC);
+                    command.Parameters.AddWithValue("@NgayNhap", DBNull.Value);
+                    command.Parameters.AddWithValue("@GioNhap", DBNull.Value);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public bool XoaDonNhap(string maDonNhap)
+        {
+            bool ketQua = false;
+
+            using (SqlConnection connection = DBConnection.GetSqlConnection())
+            {
+                using (SqlCommand command = new SqlCommand("Pr_XoaDonNhap", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@MaDonNhap", maDonNhap);
+
+                    // Thêm tham số đầu ra @KetQua
+                    SqlParameter ketQuaParam = new SqlParameter("@KetQua", SqlDbType.Bit)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    command.Parameters.Add(ketQuaParam);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+
+                    ketQua = (bool)ketQuaParam.Value;
+                }
+            }
+
+            return ketQua;
         }
     }
 }
