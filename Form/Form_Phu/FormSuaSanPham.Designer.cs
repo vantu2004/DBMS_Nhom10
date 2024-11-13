@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cbx_ChonDongMay = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btn_HoanThanh = new System.Windows.Forms.Button();
-            this.btn_TaoDongMay = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.tbx_MauSac = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,24 +37,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tbx_GiaBan = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.pbx_HinhAnh = new System.Windows.Forms.PictureBox();
             this.btn_ThemAnh = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.tbx_Thue = new System.Windows.Forms.TextBox();
+            this.tbx_Imei = new System.Windows.Forms.TextBox();
+            this.pbx_HinhAnh = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_HinhAnh)).BeginInit();
             this.SuspendLayout();
-            // 
-            // cbx_ChonDongMay
-            // 
-            this.cbx_ChonDongMay.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cbx_ChonDongMay.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.cbx_ChonDongMay.FormattingEnabled = true;
-            this.cbx_ChonDongMay.IntegralHeight = false;
-            this.cbx_ChonDongMay.Location = new System.Drawing.Point(44, 54);
-            this.cbx_ChonDongMay.Name = "cbx_ChonDongMay";
-            this.cbx_ChonDongMay.Size = new System.Drawing.Size(229, 32);
-            this.cbx_ChonDongMay.TabIndex = 15;
             // 
             // label4
             // 
@@ -65,9 +53,9 @@
             this.label4.ForeColor = System.Drawing.SystemColors.GrayText;
             this.label4.Location = new System.Drawing.Point(40, 30);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(119, 21);
+            this.label4.Size = new System.Drawing.Size(40, 21);
             this.label4.TabIndex = 14;
-            this.label4.Text = "Chọn dòng máy";
+            this.label4.Text = "Imei";
             // 
             // btn_HoanThanh
             // 
@@ -79,18 +67,7 @@
             this.btn_HoanThanh.TabIndex = 13;
             this.btn_HoanThanh.Text = "Hoàn thành";
             this.btn_HoanThanh.UseVisualStyleBackColor = false;
-            // 
-            // btn_TaoDongMay
-            // 
-            this.btn_TaoDongMay.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btn_TaoDongMay.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btn_TaoDongMay.Location = new System.Drawing.Point(279, 54);
-            this.btn_TaoDongMay.Name = "btn_TaoDongMay";
-            this.btn_TaoDongMay.Size = new System.Drawing.Size(105, 32);
-            this.btn_TaoDongMay.TabIndex = 16;
-            this.btn_TaoDongMay.Text = "Mới";
-            this.btn_TaoDongMay.UseVisualStyleBackColor = false;
-            this.btn_TaoDongMay.Click += new System.EventHandler(this.btn_TaoDongMay_Click);
+            this.btn_HoanThanh.Click += new System.EventHandler(this.btn_HoanThanh_Click);
             // 
             // label3
             // 
@@ -160,14 +137,6 @@
             this.label7.TabIndex = 28;
             this.label7.Text = "Hình ảnh";
             // 
-            // pbx_HinhAnh
-            // 
-            this.pbx_HinhAnh.Location = new System.Drawing.Point(416, 54);
-            this.pbx_HinhAnh.Name = "pbx_HinhAnh";
-            this.pbx_HinhAnh.Size = new System.Drawing.Size(225, 201);
-            this.pbx_HinhAnh.TabIndex = 30;
-            this.pbx_HinhAnh.TabStop = false;
-            // 
             // btn_ThemAnh
             // 
             this.btn_ThemAnh.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
@@ -178,6 +147,7 @@
             this.btn_ThemAnh.TabIndex = 32;
             this.btn_ThemAnh.Text = "Thêm";
             this.btn_ThemAnh.UseVisualStyleBackColor = false;
+            this.btn_ThemAnh.Click += new System.EventHandler(this.btn_ThemAnh_Click);
             // 
             // label2
             // 
@@ -209,16 +179,37 @@
             this.tbx_Thue.Size = new System.Drawing.Size(225, 32);
             this.tbx_Thue.TabIndex = 33;
             // 
+            // tbx_Imei
+            // 
+            this.tbx_Imei.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.tbx_Imei.Location = new System.Drawing.Point(44, 54);
+            this.tbx_Imei.Name = "tbx_Imei";
+            this.tbx_Imei.ReadOnly = true;
+            this.tbx_Imei.Size = new System.Drawing.Size(340, 32);
+            this.tbx_Imei.TabIndex = 36;
+            // 
+            // pbx_HinhAnh
+            // 
+            this.pbx_HinhAnh.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.pbx_HinhAnh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbx_HinhAnh.Location = new System.Drawing.Point(416, 55);
+            this.pbx_HinhAnh.Name = "pbx_HinhAnh";
+            this.pbx_HinhAnh.Size = new System.Drawing.Size(225, 226);
+            this.pbx_HinhAnh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbx_HinhAnh.TabIndex = 59;
+            this.pbx_HinhAnh.TabStop = false;
+            // 
             // form_SuaSanPham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 453);
+            this.Controls.Add(this.pbx_HinhAnh);
+            this.Controls.Add(this.tbx_Imei);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tbx_Thue);
             this.Controls.Add(this.btn_ThemAnh);
-            this.Controls.Add(this.pbx_HinhAnh);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.tbx_GiaBan);
@@ -226,8 +217,6 @@
             this.Controls.Add(this.tbx_GiaNhap);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tbx_MauSac);
-            this.Controls.Add(this.btn_TaoDongMay);
-            this.Controls.Add(this.cbx_ChonDongMay);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btn_HoanThanh);
             this.Name = "form_SuaSanPham";
@@ -240,11 +229,8 @@
         }
 
         #endregion
-
-        public System.Windows.Forms.ComboBox cbx_ChonDongMay;
         public System.Windows.Forms.Label label4;
         public System.Windows.Forms.Button btn_HoanThanh;
-        public System.Windows.Forms.Button btn_TaoDongMay;
         public System.Windows.Forms.Label label3;
         public System.Windows.Forms.TextBox tbx_MauSac;
         public System.Windows.Forms.Label label1;
@@ -252,10 +238,11 @@
         public System.Windows.Forms.Label label5;
         public System.Windows.Forms.TextBox tbx_GiaBan;
         public System.Windows.Forms.Label label7;
-        public System.Windows.Forms.PictureBox pbx_HinhAnh;
         public System.Windows.Forms.Button btn_ThemAnh;
         public System.Windows.Forms.Label label2;
         public System.Windows.Forms.Label label6;
         public System.Windows.Forms.TextBox tbx_Thue;
+        public System.Windows.Forms.TextBox tbx_Imei;
+        public System.Windows.Forms.PictureBox pbx_HinhAnh;
     }
 }

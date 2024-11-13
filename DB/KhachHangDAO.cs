@@ -152,23 +152,31 @@ namespace Nhom11
                 sqlCommand.Parameters.AddWithValue("@MaDonBan", maDonBan);
                 sqlCommand.Parameters.AddWithValue("@SoTienTraThem", soTienTraThem);
 
+                SqlParameter successParam = new SqlParameter("@Success", SqlDbType.Int)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                sqlCommand.Parameters.Add(successParam);
+
                 try
                 {
                     conn.Open();
-                    SqlDataReader reader = sqlCommand.ExecuteReader();
-                    if (reader.Read() && (int)reader["Success"] == 1)
+                    sqlCommand.ExecuteNonQuery();
+
+                    if ((int)successParam.Value == 1)
                     {
+                        Console.WriteLine("Cập nhật thành công.");
                         return true;
                     }
                     else
                     {
-
+                        Console.WriteLine("Không thể cập nhật: Số tiền trả thêm vượt quá số tiền còn lại hoặc bản ghi không tồn tại.");
                         return false;
                     }
                 }
                 catch (SqlException ex)
                 {
-
+                    Console.WriteLine("Lỗi SQL: " + ex.Message);
                     return false;
                 }
             }
@@ -195,37 +203,39 @@ namespace Nhom11
         }
 
         //  Anh Tú
-        public bool UpdateSoTienConLai(string maDonBan, decimal soTienTraThem, DateTime ngayGhiNo, DateTime gioGhiNo)
-        {
-            using (SqlConnection conn = DBConnection.GetSqlConnection())
-            {
-                SqlCommand sqlCommand = new SqlCommand("sp_UpdateSoTienConLai", conn);
-                sqlCommand.CommandType = CommandType.StoredProcedure;
+        //public bool UpdateSoTienConLai(string maDonBan, decimal soTienTraThem, DateTime ngayGhiNo, DateTime gioGhiNo)
+        //{
+        //    using (SqlConnection conn = DBConnection.GetSqlConnection())
+        //    {
+        //        SqlCommand sqlCommand = new SqlCommand("sp_UpdateSoTienConLai", conn);
+        //        sqlCommand.CommandType = CommandType.StoredProcedure;
 
-                sqlCommand.Parameters.AddWithValue("@MaDonBan", maDonBan);
-                sqlCommand.Parameters.AddWithValue("@SoTienTraThem", soTienTraThem);
-                sqlCommand.Parameters.AddWithValue("@NgayGhiNo", ngayGhiNo);
-                sqlCommand.Parameters.AddWithValue("@GioGhiNo", gioGhiNo);
+        //        sqlCommand.Parameters.AddWithValue("@MaDonBan", maDonBan);
+        //        sqlCommand.Parameters.AddWithValue("@SoTienTraThem", soTienTraThem);
+        //        sqlCommand.Parameters.AddWithValue("@NgayGhiNo", ngayGhiNo);
+        //        sqlCommand.Parameters.AddWithValue("@GioGhiNo", gioGhiNo);
 
-                SqlParameter successParam = new SqlParameter("@Success", SqlDbType.Int)
-                {
-                    Direction = ParameterDirection.Output
-                };
-                sqlCommand.Parameters.Add(successParam);
+        //        SqlParameter successParam = new SqlParameter("@Success", SqlDbType.Int)
+        //        {
+        //            Direction = ParameterDirection.Output
+        //        };
+        //        sqlCommand.Parameters.Add(successParam);
 
-                try
-                {
-                    conn.Open();
-                    sqlCommand.ExecuteNonQuery();
+        //        try
+        //        {
+        //            conn.Open();
+        //            sqlCommand.ExecuteNonQuery();
 
-                    return (int)successParam.Value == 1;
-                }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show("Lỗi SQL: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-            }
-        }
+        //            return (int)successParam.Value == 1;
+        //        }
+        //        catch (SqlException ex)
+        //        {
+        //            MessageBox.Show("Lỗi SQL: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //            return false;
+        //        }
+        //    }
+        //}
+
+
     }
 }

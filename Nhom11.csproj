@@ -76,6 +76,12 @@
     <Compile Include="DB\DonHangDAO.cs" />
     <Compile Include="DB\NhanVienDAO.cs" />
     <Compile Include="DB\DonNhapDAO.cs" />
+    <Compile Include="Form\Form_Phu\FormXemAnh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Form_Phu\FormXemAnh.Designer.cs">
+      <DependentUpon>FormXemAnh.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\Form_Phu\FormSuaDonNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +198,9 @@
     <Compile Include="UC_Controls\UC_NhanVien.Designer.cs">
       <DependentUpon>UC_NhanVien.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form\Form_Phu\FormXemAnh.resx">
+      <DependentUpon>FormXemAnh.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\Form_Phu\FormSuaDonNhap.resx">
       <DependentUpon>FormSuaDonNhap.cs</DependentUpon>
     </EmbeddedResource>

@@ -77,12 +77,118 @@ namespace Nhom11.DB
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Không thể lấy danh sách đơn hàng: " + ex.Message);
+                    throw new Exception("Không thể lấy danh sách nv: " + ex.Message);
                 }
             }
 
             return dt;
         }
+
+        public bool ThemNhanVien(string tenNhanVien, string gmail, string soDienThoai, string matKhau, string chucVu)
+        {
+            using (SqlConnection conn = DBConnection.GetSqlConnection())
+            {
+                try
+                {
+                    conn.Open();
+                    SqlCommand sqlCommand = new SqlCommand("ThemNhanVien", conn);
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                    // Thêm tham số vào command
+                    sqlCommand.Parameters.AddWithValue("@TenNhanVien", tenNhanVien);
+                    sqlCommand.Parameters.AddWithValue("@Gmail", gmail);
+                    sqlCommand.Parameters.AddWithValue("@SoDienThoai", soDienThoai);
+                    sqlCommand.Parameters.AddWithValue("@MatKhau", matKhau);
+                    sqlCommand.Parameters.AddWithValue("@ChucVu", chucVu);
+
+                    // Thực thi stored procedure
+                    int rowsAffected = sqlCommand.ExecuteNonQuery();
+
+                    // Trả về true nếu có dòng bị thêm, ngược lại trả về false
+                    return rowsAffected > 0;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Lỗi khi thêm nhân viên: " + ex.Message);
+                }
+            }
+        }
+        public DataTable TimKiemNhanVienTheoSDT(string soDienThoai)
+        {
+            using (SqlConnection conn = DBConnection.GetSqlConnection())
+            {
+                SqlCommand cmd = new SqlCommand("usp_TimKiemNhanVienTheoSDT", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@SoDienThoai", soDienThoai);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+        }
+
+        public bool XoaNhanVienTheoSDT(string soDienThoai)
+        {
+            using (SqlConnection conn = DBConnection.GetSqlConnection())
+            {
+                SqlCommand cmd = new SqlCommand("usp_XoaNhanVienTheoSDT", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@SoDienThoai", soDienThoai);
+
+                conn.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                return rowsAffected > 0;
+            }
+        }
+
+        public bool SuaNhanVienTheoSDT(string soDienThoai, string tenNhanVien, string gmail, string matKhau, string chucVu)
+        {
+            using (SqlConnection conn = DBConnection.GetSqlConnection())
+            {
+                SqlCommand cmd = new SqlCommand("usp_SuaNhanVienTheoSDT", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@SoDienThoai", soDienThoai);
+                cmd.Parameters.AddWithValue("@TenNhanVien", tenNhanVien);
+                cmd.Parameters.AddWithValue("@Gmail", gmail);
+                cmd.Parameters.AddWithValue("@MatKhau", matKhau);
+                cmd.Parameters.AddWithValue("@ChucVu", chucVu);
+
+                conn.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                return rowsAffected > 0;
+            }
+        }
+        public bool CapNhatThongTinNhanVien(string maNhanVien, string tenNhanVien, string gmail, string soDienThoai, string matKhau, string chucVu)
+        {
+            using (SqlConnection conn = DBConnection.GetSqlConnection())
+            {
+                try
+                {
+                    conn.Open();
+                    SqlCommand sqlCommand = new SqlCommand("usp_CapNhatThongTinNhanVien", conn);
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                    // Thêm tham số vào command
+                    sqlCommand.Parameters.AddWithValue("@MaNhanVien", maNhanVien);
+                    sqlCommand.Parameters.AddWithValue("@TenNhanVien", tenNhanVien);
+                    sqlCommand.Parameters.AddWithValue("@Gmail", gmail);
+                    sqlCommand.Parameters.AddWithValue("@SoDienThoai", soDienThoai);
+                    sqlCommand.Parameters.AddWithValue("@MatKhau", matKhau);
+                    sqlCommand.Parameters.AddWithValue("@ChucVu", chucVu);
+
+                    // Thực thi stored procedure
+                    int rowsAffected = sqlCommand.ExecuteNonQuery();
+
+                    return rowsAffected > 0; // Trả về true nếu cập nhật thành công
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Lỗi khi cập nhật thông tin nhân viên: " + ex.Message);
+                }
+            }
+        }
+
     }
 
 }
