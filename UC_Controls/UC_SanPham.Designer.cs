@@ -42,9 +42,9 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dgv_SamPhamCanCapNhat = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.tbx_Imei = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btn_HoanThanh = new System.Windows.Forms.Button();
-            this.cbx_ChonImei = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cbx_ChonDongMay = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -110,6 +110,8 @@
             this.dgv_DanhSachSanPham.RowTemplate.Height = 24;
             this.dgv_DanhSachSanPham.Size = new System.Drawing.Size(1640, 871);
             this.dgv_DanhSachSanPham.TabIndex = 2;
+            this.dgv_DanhSachSanPham.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DanhSachSanPham_CellClick);
+            this.dgv_DanhSachSanPham.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DanhSachSanPham_CellContentClick);
             // 
             // groupBox1
             // 
@@ -148,6 +150,7 @@
             this.btn_TìmSanPham.TabIndex = 4;
             this.btn_TìmSanPham.Text = "Tìm kiếm";
             this.btn_TìmSanPham.UseVisualStyleBackColor = false;
+            this.btn_TìmSanPham.Click += new System.EventHandler(this.btn_TìmSanPham_Click);
             // 
             // btn_XoaSanPham
             // 
@@ -232,13 +235,15 @@
             this.dgv_SamPhamCanCapNhat.RowTemplate.Height = 24;
             this.dgv_SamPhamCanCapNhat.Size = new System.Drawing.Size(1654, 637);
             this.dgv_SamPhamCanCapNhat.TabIndex = 3;
+            this.dgv_SamPhamCanCapNhat.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_SamPhamCanCapNhat_CellClick);
+            this.dgv_SamPhamCanCapNhat.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_SamPhamCanCapNhat_CellContentClick_1);
             // 
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox3.Controls.Add(this.tbx_Imei);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.btn_HoanThanh);
-            this.groupBox3.Controls.Add(this.cbx_ChonImei);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.cbx_ChonDongMay);
             this.groupBox3.Controls.Add(this.label2);
@@ -264,6 +269,14 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Chi tiết";
             // 
+            // tbx_Imei
+            // 
+            this.tbx_Imei.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.tbx_Imei.Location = new System.Drawing.Point(155, 61);
+            this.tbx_Imei.Name = "tbx_Imei";
+            this.tbx_Imei.Size = new System.Drawing.Size(340, 32);
+            this.tbx_Imei.TabIndex = 64;
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -271,9 +284,9 @@
             this.label8.ForeColor = System.Drawing.SystemColors.GrayText;
             this.label8.Location = new System.Drawing.Point(151, 38);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(80, 21);
+            this.label8.Size = new System.Drawing.Size(40, 21);
             this.label8.TabIndex = 63;
-            this.label8.Text = "Chọn Imei";
+            this.label8.Text = "Imei";
             // 
             // btn_HoanThanh
             // 
@@ -286,17 +299,7 @@
             this.btn_HoanThanh.TabIndex = 47;
             this.btn_HoanThanh.Text = "Hoàn thành";
             this.btn_HoanThanh.UseVisualStyleBackColor = false;
-            // 
-            // cbx_ChonImei
-            // 
-            this.cbx_ChonImei.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cbx_ChonImei.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.cbx_ChonImei.FormattingEnabled = true;
-            this.cbx_ChonImei.IntegralHeight = false;
-            this.cbx_ChonImei.Location = new System.Drawing.Point(155, 62);
-            this.cbx_ChonImei.Name = "cbx_ChonImei";
-            this.cbx_ChonImei.Size = new System.Drawing.Size(340, 32);
-            this.cbx_ChonImei.TabIndex = 64;
+            this.btn_HoanThanh.Click += new System.EventHandler(this.btn_HoanThanh_Click);
             // 
             // label4
             // 
@@ -392,6 +395,7 @@
             this.btn_ThemAnh.TabIndex = 59;
             this.btn_ThemAnh.Text = "Thêm";
             this.btn_ThemAnh.UseVisualStyleBackColor = false;
+            this.btn_ThemAnh.Click += new System.EventHandler(this.btn_ThemAnh_Click);
             // 
             // tbx_GiaNhap
             // 
@@ -403,11 +407,15 @@
             // 
             // pbx_HinhAnh
             // 
+            this.pbx_HinhAnh.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.pbx_HinhAnh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbx_HinhAnh.Location = new System.Drawing.Point(1110, 62);
             this.pbx_HinhAnh.Name = "pbx_HinhAnh";
             this.pbx_HinhAnh.Size = new System.Drawing.Size(225, 201);
+            this.pbx_HinhAnh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbx_HinhAnh.TabIndex = 58;
             this.pbx_HinhAnh.TabStop = false;
+            this.pbx_HinhAnh.Click += new System.EventHandler(this.pbx_HinhAnh_Click);
             // 
             // label1
             // 
@@ -486,7 +494,6 @@
         public System.Windows.Forms.TabControl tcl_SanPham;
         private System.Windows.Forms.TabPage tab_CapNhatThongTin;
         public System.Windows.Forms.DataGridView dgv_SamPhamCanCapNhat;
-        public System.Windows.Forms.ComboBox cbx_ChonImei;
         public System.Windows.Forms.Label label8;
         public System.Windows.Forms.Label label2;
         public System.Windows.Forms.Label label6;
@@ -508,5 +515,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox3;
+        public System.Windows.Forms.TextBox tbx_Imei;
     }
 }

@@ -144,6 +144,7 @@
             this.btn_TìmSoDienThoai.TabIndex = 4;
             this.btn_TìmSoDienThoai.Text = "Tìm kiếm";
             this.btn_TìmSoDienThoai.UseVisualStyleBackColor = false;
+            this.btn_TìmSoDienThoai.Click += new System.EventHandler(this.btn_TìmSoDienThoai_Click);
             // 
             // btn_SuaNhanVien
             // 
@@ -169,6 +170,7 @@
             this.btn_XoaNhanVien.TabIndex = 5;
             this.btn_XoaNhanVien.Text = "Xóa";
             this.btn_XoaNhanVien.UseVisualStyleBackColor = false;
+            this.btn_XoaNhanVien.Click += new System.EventHandler(this.btn_XoaNhanVien_Click);
             // 
             // tab_TaoNhanVien
             // 
@@ -200,8 +202,8 @@
             this.cbx_ChucVu.FormattingEnabled = true;
             this.cbx_ChucVu.IntegralHeight = false;
             this.cbx_ChucVu.Items.AddRange(new object[] {
-            "QuanLy",
-            "NhanVien"});
+            "Quản Lý",
+            "Nhân Viên"});
             this.cbx_ChucVu.Location = new System.Drawing.Point(104, 259);
             this.cbx_ChucVu.Name = "cbx_ChucVu";
             this.cbx_ChucVu.Size = new System.Drawing.Size(396, 32);
@@ -218,6 +220,7 @@
             this.btn_HoanThanh.TabIndex = 39;
             this.btn_HoanThanh.Text = "Hoàn thành";
             this.btn_HoanThanh.UseVisualStyleBackColor = false;
+            this.btn_HoanThanh.Click += new System.EventHandler(this.btn_HoanThanh_Click);
             // 
             // label7
             // 

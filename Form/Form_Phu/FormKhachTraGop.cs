@@ -71,8 +71,6 @@ namespace Nhom11
             try
             {
                 string maDonBan = selectedMaDonBan;
-                DateTime ngayGhiNo = selectedNgayGhiNo;
-                DateTime gioGhiNo = selectedGioGhiNo;
                 decimal soTienTraThem = Convert.ToDecimal(tbx_KhachTraThem.Text);
 
                 if (string.IsNullOrEmpty(maDonBan))
@@ -81,7 +79,8 @@ namespace Nhom11
                     return;
                 }
 
-                if (khachHangDAO.UpdateSoTienConLai(maDonBan, soTienTraThem, ngayGhiNo, gioGhiNo))
+                // Gọi phương thức cập nhật mà không truyền thời gian thực
+                if (khachHangDAO.UpdateSoTienConLai(maDonBan, soTienTraThem))
                 {
                     MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
