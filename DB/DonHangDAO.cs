@@ -89,9 +89,9 @@ namespace Nhom11.DB
                         {
                             if (row[col] == DBNull.Value)
                             {
-                                //// Nếu có null, thêm vào danh sách xóa
-                                //rowsToDelete.Add(row);
-                                //break;
+                                // Nếu có null, thêm vào danh sách xóa
+                                rowsToDelete.Add(row);
+                                break;
                             }
                         }
                     }

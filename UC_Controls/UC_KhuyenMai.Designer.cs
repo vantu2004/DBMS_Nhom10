@@ -171,6 +171,7 @@
             this.btn_XoaMaKhuyenMai.TabIndex = 5;
             this.btn_XoaMaKhuyenMai.Text = "Xóa";
             this.btn_XoaMaKhuyenMai.UseVisualStyleBackColor = false;
+            this.btn_XoaMaKhuyenMai.Click += new System.EventHandler(this.btn_XoaMaKhuyenMai_Click);
             // 
             // tab_TaoKhuyenMai
             // 

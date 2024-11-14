@@ -11,7 +11,8 @@ namespace Nhom11.DB
 {
     internal class DBConnection
     {
-        private static string strConnection = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=ImeiShop;Integrated Security=True;Encrypt=False";
+        private static string strConnection = 
+            @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=ImeiShop;Integrated Security=True;Encrypt=False";
 
         private SqlConnection conn;
         private string connString;
