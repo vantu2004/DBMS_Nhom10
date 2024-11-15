@@ -34,7 +34,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tbx_TimSanPham = new System.Windows.Forms.TextBox();
             this.btn_TìmSanPham = new System.Windows.Forms.Button();
-            this.btn_XoaSanPham = new System.Windows.Forms.Button();
             this.btn_SuaSanPham = new System.Windows.Forms.Button();
             this.tbx_NhapImei = new System.Windows.Forms.TextBox();
             this.tcl_SanPham = new System.Windows.Forms.TabControl();
@@ -48,7 +47,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cbx_ChonDongMay = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btn_TaoDongMay = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.tbx_MauSac = new System.Windows.Forms.TextBox();
             this.tbx_Thue = new System.Windows.Forms.TextBox();
@@ -117,7 +115,6 @@
             // 
             this.groupBox1.Controls.Add(this.tbx_TimSanPham);
             this.groupBox1.Controls.Add(this.btn_TìmSanPham);
-            this.groupBox1.Controls.Add(this.btn_XoaSanPham);
             this.groupBox1.Controls.Add(this.btn_SuaSanPham);
             this.groupBox1.Controls.Add(this.tbx_NhapImei);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -151,18 +148,6 @@
             this.btn_TìmSanPham.Text = "Tìm kiếm";
             this.btn_TìmSanPham.UseVisualStyleBackColor = false;
             this.btn_TìmSanPham.Click += new System.EventHandler(this.btn_TìmSanPham_Click);
-            // 
-            // btn_XoaSanPham
-            // 
-            this.btn_XoaSanPham.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btn_XoaSanPham.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btn_XoaSanPham.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btn_XoaSanPham.Location = new System.Drawing.Point(1007, 38);
-            this.btn_XoaSanPham.Name = "btn_XoaSanPham";
-            this.btn_XoaSanPham.Size = new System.Drawing.Size(110, 32);
-            this.btn_XoaSanPham.TabIndex = 6;
-            this.btn_XoaSanPham.Text = "Xóa";
-            this.btn_XoaSanPham.UseVisualStyleBackColor = false;
             // 
             // btn_SuaSanPham
             // 
@@ -247,7 +232,6 @@
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.cbx_ChonDongMay);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.btn_TaoDongMay);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.tbx_MauSac);
             this.groupBox3.Controls.Add(this.tbx_Thue);
@@ -320,7 +304,7 @@
             this.cbx_ChonDongMay.IntegralHeight = false;
             this.cbx_ChonDongMay.Location = new System.Drawing.Point(155, 121);
             this.cbx_ChonDongMay.Name = "cbx_ChonDongMay";
-            this.cbx_ChonDongMay.Size = new System.Drawing.Size(229, 32);
+            this.cbx_ChonDongMay.Size = new System.Drawing.Size(340, 32);
             this.cbx_ChonDongMay.TabIndex = 49;
             // 
             // label2
@@ -333,18 +317,6 @@
             this.label2.Size = new System.Drawing.Size(109, 21);
             this.label2.TabIndex = 62;
             this.label2.Text = "% (Phần trăm)";
-            // 
-            // btn_TaoDongMay
-            // 
-            this.btn_TaoDongMay.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btn_TaoDongMay.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btn_TaoDongMay.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btn_TaoDongMay.Location = new System.Drawing.Point(390, 121);
-            this.btn_TaoDongMay.Name = "btn_TaoDongMay";
-            this.btn_TaoDongMay.Size = new System.Drawing.Size(105, 32);
-            this.btn_TaoDongMay.TabIndex = 50;
-            this.btn_TaoDongMay.Text = "Mới";
-            this.btn_TaoDongMay.UseVisualStyleBackColor = false;
             // 
             // label6
             // 
@@ -488,7 +460,6 @@
         public System.Windows.Forms.Button btn_SuaSanPham;
         public System.Windows.Forms.TextBox tbx_NhapImei;
         public System.Windows.Forms.TextBox tbx_TimSanPham;
-        public System.Windows.Forms.Button btn_XoaSanPham;
         public System.Windows.Forms.Button btn_TìmSanPham;
         public System.Windows.Forms.DataGridView dgv_DanhSachSanPham;
         public System.Windows.Forms.TabControl tcl_SanPham;
@@ -507,7 +478,6 @@
         public System.Windows.Forms.TextBox tbx_GiaNhap;
         public System.Windows.Forms.Label label3;
         public System.Windows.Forms.TextBox tbx_MauSac;
-        public System.Windows.Forms.Button btn_TaoDongMay;
         public System.Windows.Forms.ComboBox cbx_ChonDongMay;
         public System.Windows.Forms.Label label4;
         public System.Windows.Forms.Button btn_HoanThanh;

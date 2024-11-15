@@ -414,6 +414,11 @@ namespace Nhom11
             }
         }
 
+        private void btn_TaoDongMay_Click(object sender, EventArgs e)
+        {
+
+        }
+
         //private void btn_XoaSanPham_Click(object sender, EventArgs e)
         //{
         //    string maImei = tbx_NhapImei.Text.Trim();

@@ -94,10 +94,25 @@ namespace Nhom11
 
         private void btn_TìmMaKhuyenMai_Click(object sender, EventArgs e)
         {
-            if (!int.TryParse(tbx_TimMaKhuyenMai.Text, out _))
+            if (!int.TryParse(tbx_TimMaKhuyenMai.Text, out _) || !string.IsNullOrEmpty(tbx_TimMaKhuyenMai.Text))
             {
                 DataTable dt = khuyenMaiDAO.LayThongTinKhuyenMai(tbx_TimMaKhuyenMai.Text);
                 dgv_DanhSachMaKhuyenMai.DataSource = dt;
+            }
+        }
+
+        private void btn_XoaMaKhuyenMai_Click(object sender, EventArgs e)
+        {
+            if (!int.TryParse(tbx_TimMaKhuyenMai.Text, out _) || !string.IsNullOrEmpty(tbx_TimMaKhuyenMai.Text))
+            {
+                if (khuyenMaiDAO.XoaMaKhuyenMai(tbx_TimMaKhuyenMai.Text))
+                {
+                    MessageBox.Show("Xóa khuyến mãi thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Không thể xóa mã khuyến mãi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
     }

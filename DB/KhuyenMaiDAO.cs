@@ -152,5 +152,32 @@ namespace Nhom11
             }
         }
 
+
+        public bool XoaMaKhuyenMai(string maKhuyenMai)
+        {
+            using (SqlConnection connection = DBConnection.GetSqlConnection())
+            {
+                try
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("Pr_XoaMaKhuyenMai", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@MaKhuyenMai", maKhuyenMai);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        return rowsAffected > 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Lỗi: " + ex.Message);
+                    return false;
+                }
+            }
+        }
     }
 }
